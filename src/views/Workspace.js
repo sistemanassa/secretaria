@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 
+// import Video from '../components/video/Video';
+
 const styles = {
   main: {
     margin: '16px',
@@ -12,7 +14,7 @@ const styles = {
   },
   gridRow: {
     display: 'grid',
-    gridTemplateColumns: 'calc(100vw - 64px - 30vw) 30vw',
+    gridTemplateColumns: 'calc(100vw - 64px - 40vw) 40vw',
   },
   gridRowSup: {
     width: 'calc(100vw - 64px)',
@@ -24,10 +26,10 @@ const styles = {
     borderTop: '1px solid darkgrey',
   },
   containerLeft: {
-    width: 'calc(100vw - 64px - 30vw)',
+    width: 'calc(100vw - 64px - 40vw)',
   },
   containerRight: {
-    width: '30vw',
+    width: '40vw',
     borderLeft: '1px solid darkgrey',
     overflowY: 'auto',
     paddingLeft: '10px',
@@ -50,14 +52,10 @@ class Workspace extends Component {
 
   renderVideo = () => {
     const { classes } = this.props;
-    return (
-      <div className={classes.containerLeft}>
-        <p>Área de vídeo</p>
-      </div>
-    );
+    return <div className={classes.containerLeft}>{/* <Video /> */}</div>;
   };
 
-  renderGuiche = () => {
+  renderRecentCalls = () => {
     const { classes } = this.props;
     return (
       <div className={classes.containerRight}>
@@ -91,7 +89,7 @@ class Workspace extends Component {
       <Paper elevation={4} className={classes.main}>
         <div className={classes.gridRow} style={styles.gridRowSup}>
           {this.renderVideo()}
-          {this.renderGuiche()}
+          {this.renderRecentCalls()}
         </div>
 
         <div className={classes.gridRow} style={styles.gridRowInf}>
