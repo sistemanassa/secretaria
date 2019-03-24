@@ -1,8 +1,9 @@
 import React from 'react';
 import { Link } from "react-router-dom";
-import { Icon, Button, Table, TableBody, TableCell, TableHead, TableRow, Typography } from "@material-ui/core";
+import { Button, Table, TableBody, TableCell, TableHead, TableRow, Typography } from "@material-ui/core";
 import FirebaseService from "../../services/FirebaseService";
 import { privateUrls } from "../../utils/urlUtils";
+import { Menu } from "../../components/Menu/Menu";
 
 export const DataTable = ({data}) => {
     const remove = (id) => {
@@ -10,16 +11,17 @@ export const DataTable = ({data}) => {
     };
 
     return <React.Fragment>
+        <Menu />
         <Typography variant="headline" component="h2">Cadastro de Atendimento</Typography>
         <Table selectable="false">
             <TableHead>
                 <TableRow>
                     <TableCell>Key</TableCell>
-                    <TableCell>Temperature</TableCell>
-                    <TableCell>Humidity</TableCell>
-                    <TableCell>Client</TableCell>
-                    <TableCell>Data</TableCell>
-                    <TableCell>Actions</TableCell>
+                    <TableCell>Nome</TableCell>
+                    <TableCell>CPF</TableCell>
+                    <TableCell>Matrícula</TableCell>
+                    <TableCell>E-mail</TableCell>
+                    <TableCell></TableCell>
                 </TableRow>
             </TableHead>
             <TableBody>
@@ -27,10 +29,10 @@ export const DataTable = ({data}) => {
                     data.map((item, index) =>
                         <TableRow key={index}>
                             <TableCell>{item.key}</TableCell>
-                            <TableCell>{item.temperatura}</TableCell>
-                            <TableCell>{item.umidade}</TableCell>
-                            <TableCell>{item.cliente}</TableCell>
-                            <TableCell>{item.data}</TableCell>
+                            <TableCell>{item.nome}</TableCell>
+                            <TableCell>{item.cpf}</TableCell>
+                            <TableCell>{item.matricula}</TableCell>
+                            <TableCell>{item.email}</TableCell>
                             <TableCell>
                                 <Button  
                                     variant="contained" 
@@ -39,16 +41,14 @@ export const DataTable = ({data}) => {
                                         {...props}/>
                                     }
                                 >
-                                    <Icon>edit</Icon>
-                                    {/* Edit */}
+                                    Editar
                                 </Button>
 
                                 <Button  
                                     variant="contained"
                                     onClick={() => remove(item.key)}
                                 >
-                                    <Icon>close</Icon>
-                                    {/* Remove */}
+                                    Remover
                                 </Button>
                             </TableCell>
                         </TableRow>

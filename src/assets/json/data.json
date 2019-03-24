@@ -1,8 +1,8 @@
 [ 
     { 
-        "temperatura" : "float",
-        "umidade" : "float",
-        "cliente": "String",
-        "data": "String"
+        "nome" : "String",
+        "cpf" : "String",
+        "matricula": "String",
+        "email": "String"
     }
 ]

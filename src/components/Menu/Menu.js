@@ -7,7 +7,7 @@ import { urls } from "../../utils/urlUtils";
 export const Menu = () => {
     return (
         <React.Fragment>
-            <Typography variant="headline" component="h2">Menu</Typography>
+            {/* <Typography variant="headline" component="h2">Menu</Typography> */}
             {
                 Object.values(urls).map((url, index) => {
                     return (

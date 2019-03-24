@@ -1,7 +1,7 @@
 export const urls = {
     home: { name: 'Home', path:'/'},
-    data: { name: 'Data', path:'/data'},
-    add: { name: 'Add', path:'/add'},
+    data: { name: 'Cadastro', path:'/data'},
+    add: { name: 'Adicionar', path:'/add'},
     atendimento: { name: 'Atendimento', path:'/atendimento'},
     login: { name: 'Login', path:'/login'},
 };

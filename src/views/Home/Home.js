@@ -7,6 +7,7 @@ import { privateUrls, urls } from "../../utils/urlUtils";
 import Add from "../../components/Add/Add";
 import { Menu } from "../../components/Menu/Menu";
 import Header from "../../components/Header/Header";
+import Footer from "../../components/Footer/Footer";
 import Login from "../../components/Login/Login";
 import Atendimento from "../../components/Atendimento/Atendimento";
 import { connect } from "react-redux";
@@ -33,47 +34,48 @@ class Home extends Component {
         <div>
             <Header/>
             <Paper elevation={4} style={{margin: '16px'}}>
-                    <Route 
-                        exact path={urls.login.path}
-                        render={(props) =>
-                            <NavigationLoggedWrapper component={Login} {...props}/>
-                        }
-                    />
-                    <Route 
-                        exact path={urls.home.path}
-                        render={(props) =>
-                            <NavigationWrapper component={Menu} {...props}/>
-                        }
-                    />
-                    <Route 
-                        exact path={urls.data.path}
-                        render={(props) =>
-                            <NavigationWrapper 
-                                component={DataTable}
-                                {...props}
-                                data={this.state.data}
-                            />
-                        }
-                    />
-                    <Route 
-                        exact path={urls.add.path}
-                        render={(props) =>
-                            <NavigationWrapper component={Add} {...props}/>
-                        }
-                    />
-                    <Route 
-                        exact path={urls.atendimento.path}
-                        render={(props) =>
-                            <NavigationWrapper component={Atendimento} {...props}/>
-                        }
-                    />
-                    <Route 
-                        exact path={privateUrls.edit.path}
-                        render={(props) =>
-                            <NavigationWrapper component={Add} {...props}/>
-                        }
-                    />
-                </Paper>
+                <Route 
+                    exact path={urls.login.path}
+                    render={(props) =>
+                        <NavigationLoggedWrapper component={Login} {...props}/>
+                    }
+                />
+                <Route 
+                    exact path={urls.home.path}
+                    render={(props) =>
+                        <NavigationWrapper component={Menu} {...props}/>
+                    }
+                />
+                <Route 
+                    exact path={urls.data.path}
+                    render={(props) =>
+                        <NavigationWrapper 
+                            component={DataTable}
+                            {...props}
+                            data={this.state.data}
+                        />
+                    }
+                />
+                <Route 
+                    exact path={urls.add.path}
+                    render={(props) =>
+                        <NavigationWrapper component={Add} {...props}/>
+                    }
+                />
+                <Route 
+                    exact path={urls.atendimento.path}
+                    render={(props) =>
+                        <NavigationWrapper component={Atendimento} {...props}/>
+                    }
+                />
+                <Route 
+                    exact path={privateUrls.edit.path}
+                    render={(props) =>
+                        <NavigationWrapper component={Add} {...props}/>
+                    }
+                />
+            </Paper>
+            <Footer />
         </div>
     );
   }

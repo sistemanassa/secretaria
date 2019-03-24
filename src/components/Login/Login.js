@@ -65,15 +65,21 @@ class Login extends Component {
                                required
                                onChange={this.handleChange('password')}/>
 
-                    <Button type="submit"
-                            style={{marginTop: '20px', display: 'inline-block'}}>
+                    <Button
+                        variant="contained" 
+                        type="submit"
+                        style={{marginTop: '20px', display: 'inline-block'}}
+                    >
                         Login
                     </Button>
 
-                    <Button onClick={this.createUser}
-                            style={{marginTop: '20px', display: 'inline-block'}}>
+                    {/* <Button 
+                        variant="contained"
+                        onClick={this.createUser}
+                        style={{marginTop: '20px', display: 'inline-block'}}
+                    >
                         New User
-                    </Button>
+                    </Button> */}
 
                 </form>
             </Fragment>)
