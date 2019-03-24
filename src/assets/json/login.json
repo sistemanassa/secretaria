@@ -1,0 +1,6 @@
+[ 
+    { 
+        "email" : "String",
+        "password": "String"
+    }
+]

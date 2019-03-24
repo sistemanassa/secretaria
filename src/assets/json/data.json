@@ -1,0 +1,8 @@
+[ 
+    { 
+        "temperatura" : "float",
+        "umidade" : "float",
+        "cliente": "String",
+        "data": "String"
+    }
+]
