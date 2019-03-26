@@ -1,11 +1,11 @@
 export const urls = {
-    home: { name: 'Home', path:'/'},
-    data: { name: 'Cadastro', path:'/data'},
-    add: { name: 'Adicionar', path:'/add'},
-    atendimento: { name: 'Atendimento', path:'/atendimento'},
-    login: { name: 'Login', path:'/login'},
+  home: { name: 'Home', path: '/' },
+  data: { name: 'Cadastro', path: '/Data' },
+  add: { name: 'Adicionar', path: '/Add' },
+  atendimento: { name: 'Atendimento', path: '/Atendimento' },
+  login: { name: 'Login', path: '/Login' },
 };
 
 export const privateUrls = {
-    edit: { name: 'Edit', path:'/edit/:id', pathWithouParam:'/edit/'}
+  edit: { name: 'Edit', path: '/edit/:id', pathWithouParam: '/edit/' },
 };

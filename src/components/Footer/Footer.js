@@ -12,15 +12,16 @@ const styles = {
   grow: {
     flexGrow: 1,
   },
-  toolbar: {
-    alignItems: 'center',
-    justifyContent: 'space-between',
-  },
   appBar: {
     position: 'fixed',
     top: 'auto',
     bottom: 0,
-    // height: '4vh',
+    height: '3vh',
+  },
+  toolbar: {
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    minHeight: 'auto',
   },
 };
 
@@ -30,7 +31,7 @@ class Footer extends Component {
     return (
       <footer className={classes.root}>
         <AppBar className={classes.appBar}>
-          <Toolbar>
+          <Toolbar className={classes.toolbar}>
             <Typography
               variant="subtitle1"
               color="inherit"
