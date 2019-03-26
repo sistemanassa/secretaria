@@ -7,9 +7,9 @@
     "@material-ui/core": "^3.6.2",
     "@material-ui/icons": "^3.0.2",
     "dotenv": "^6.2.0",
-    "gh-pages": "^2.0.1",
     "firebase": "^5.9.1",
     "firebase-tools": "^6.5.0",
+    "gh-pages": "^2.0.1",
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
     "react-redux": "^5.0.7",
@@ -46,8 +46,7 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "dev": "chmod +x ./env.sh && ./env.sh && mv env-config.js ./public/ && react-scripts start",
-    "predeploy": "yarn run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "yarn run build && gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
