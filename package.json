@@ -1,16 +1,17 @@
 {
-  "name": "template",
+  "name": "Atendimento",
   "version": "0.1.0",
+  "homepage": "https://ericfreiresouza.github.io/atendimento/",
   "private": true,
   "dependencies": {
     "@material-ui/core": "^3.6.2",
     "@material-ui/icons": "^3.0.2",
-    "firebase": "^4.10.1",
     "dotenv": "^6.2.0",
+    "gh-pages": "^2.0.1",
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
-    "react-router-dom": "^4.2.2",
     "react-redux": "^5.0.7",
+    "react-router-dom": "^4.2.2",
     "react-scripts": "1.1.1",
     "recompose": "^0.26.0",
     "redux": "^3.7.2",
@@ -43,7 +44,8 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "dev": "chmod +x ./env.sh && ./env.sh && mv env-config.js ./public/ && react-scripts start",
-    "deploy": "yarn run build && firebase deploy"
+    "predeploy": "yarn run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
