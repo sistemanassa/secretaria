@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 
-// import Video from '../components/video/Video';
+import Video from '../Video/Video';
 
 const styles = {
   main: {
@@ -52,7 +52,7 @@ class Workspace extends Component {
 
   renderVideo = () => {
     const { classes } = this.props;
-    return <div className={classes.containerLeft}>{/* <Video /> */}</div>;
+    return <div className={classes.containerLeft}><Video /></div>;
   };
 
   renderRecentCalls = () => {

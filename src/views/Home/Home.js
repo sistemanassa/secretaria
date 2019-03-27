@@ -8,7 +8,7 @@ import Add from '../../components/Add/Add';
 import { Menu } from '../../components/Menu/Menu';
 import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
-import Login from '../../components/Login/Login';
+import Login from '../Login/Login';
 import Atendimento from '../../components/Atendimento/Atendimento';
 import { connect } from 'react-redux';
 import { compose } from 'recompose';
@@ -64,13 +64,7 @@ class Home extends Component {
             path={urls.add.path}
             render={props => <NavigationWrapper component={Add} {...props} />}
           />
-          <Route
-            exact
-            path={urls.atendimento.path}
-            render={props => (
-              <NavigationWrapper component={Atendimento} {...props} />
-            )}
-          />
+          <Route exact path="/Atendimento" component={Atendimento} />
           <Route
             exact
             path={privateUrls.edit.path}

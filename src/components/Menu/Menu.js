@@ -5,6 +5,10 @@ import { Button } from '@material-ui/core';
 import { urls } from '../../utils/urlUtils';
 
 export const Menu = () => {
+  const navigateTo = () => {
+    window.open('/Atendimento');
+  };
+
   return (
     <React.Fragment>
       {/* <Typography variant="headline" component="h2">Menu</Typography> */}
@@ -18,6 +22,7 @@ export const Menu = () => {
           </Button>
         );
       })}
+      <Link to="/Atendimento" onClick={navigateTo}>Atendimento</Link>
     </React.Fragment>
   );
 };
