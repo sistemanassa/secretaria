@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import { withStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
+import { Paper, Toolbar, Typography, List, ListItem, ListItemText, Divider, Avatar } from '@material-ui/core';
+import ImageIcon from '@material-ui/icons/Image';
 
 import Video from '../Video/Video';
 
@@ -35,6 +36,20 @@ const styles = {
     paddingLeft: '10px',
     boxSizing: 'border-box',
   },
+  toolbar: {
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  grow: {
+    flexGrow: 1,
+  },
+  dividerFullWidth: {
+    margin: '0 0 0 70px',
+  },
+  root: {
+    width: '100%',
+    maxWidth: 360,
+  }
 };
 
 class Workspace extends Component {
@@ -52,14 +67,35 @@ class Workspace extends Component {
 
   renderVideo = () => {
     const { classes } = this.props;
-    return <div className={classes.containerLeft}><Video /></div>;
+    return (
+      <div className={classes.containerLeft}>
+        <Video />
+      </div>
+    );
   };
 
   renderRecentCalls = () => {
     const { classes } = this.props;
     return (
       <div className={classes.containerRight}>
-        <p>Ultimas Chamadas</p>
+        {/* <p>Ultimas Chamadas</p> */}
+        <List>
+          <ListItem>
+            <ListItemText primary="G3 - Fulano de Tal" secondary="Histórico" />
+          </ListItem>
+          <Divider component="li" />
+        </List>
+        <List>
+          <ListItem>
+            <ListItemText primary="G3 - Fulano de Tal" secondary="Histórico" />
+          </ListItem>
+          <Divider component="li" />
+        </List>
+        <List>
+          <ListItem>
+            <ListItemText primary="G3 - Fulano de Tal" secondary="Histórico" />
+          </ListItem>
+        </List>
       </div>
     );
   };
@@ -68,7 +104,19 @@ class Workspace extends Component {
     const { classes } = this.props;
     return (
       <div className={classes.containerLeft}>
-        <p>Chamada Atual</p>
+        {/* <p>Chamada Atual</p> */}
+        <Toolbar className={classes.toolbar}>
+          <Typography
+            variant="subtitle1"
+            color="inherit"
+            className={classes.grow}
+          >
+            Fulano de Tal
+          </Typography>
+          <Typography variant="subtitle1" color="inherit">
+            Guichê 3
+          </Typography>
+        </Toolbar>
       </div>
     );
   };
@@ -77,7 +125,20 @@ class Workspace extends Component {
     const { classes } = this.props;
     return (
       <div className={classes.containerRight}>
-        <p>Logo e Hora</p>
+        {/* <p>Logo e Hora</p> */}
+        <List className={classes.root}>
+          <ListItem>
+            <Avatar>
+              <ImageIcon />
+            </Avatar>
+            <ListItemText primary="Estácio" secondary="Nova América" />
+          </ListItem>
+            <li>
+              <Typography className={classes.dividerFullWidth} color="textSecondary" variant="caption">
+                16:35
+              </Typography>
+            </li>
+        </List>
       </div>
     );
   };
