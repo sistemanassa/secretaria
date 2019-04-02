@@ -52,7 +52,7 @@ const styles = {
   }
 };
 
-class Workspace extends Component {
+class Attendance extends Component {
   constructor(props) {
     super(props);
 
@@ -162,4 +162,4 @@ class Workspace extends Component {
   }
 }
 
-export default withStyles(styles)(Workspace);
+export default withStyles(styles)(Attendance);

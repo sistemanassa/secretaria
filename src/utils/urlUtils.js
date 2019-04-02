@@ -2,7 +2,7 @@ export const urls = {
   home: { name: 'Home', path: '/' },
   data: { name: 'Cadastro', path: '/Data' },
   add: { name: 'Adicionar', path: '/Add' },
-  atendimento: { name: 'Atendimento', path: '/Atendimento' },
+  atendimento: { name: 'Atendimento', path: '/Attendance' },
   login: { name: 'Login', path: '/Login' },
 };
 

@@ -9,7 +9,7 @@ import { Menu } from '../../components/Menu/Menu';
 import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
 import Login from '../Login/Login';
-import Atendimento from '../../components/Atendimento/Atendimento';
+import Attendance from '../../components/Attendance/Attendance';
 import { connect } from 'react-redux';
 import { compose } from 'recompose';
 import { login, logout } from '../../action/actionCreator';
@@ -64,7 +64,7 @@ class Home extends Component {
             path={urls.add.path}
             render={props => <NavigationWrapper component={Add} {...props} />}
           />
-          <Route exact path="/Atendimento" component={Atendimento} />
+          <Route exact path="/Attendance" component={Attendance} />
           <Route
             exact
             path={privateUrls.edit.path}
