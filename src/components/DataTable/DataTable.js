@@ -12,7 +12,6 @@ import {
 } from '@material-ui/core';
 import FirebaseService from '../../services/FirebaseService';
 import { privateUrls } from '../../utils/urlUtils';
-import { Menu } from '../../components/Menu/Menu';
 
 export const DataTable = ({ data }) => {
   const remove = id => {
@@ -21,7 +20,6 @@ export const DataTable = ({ data }) => {
 
   return (
     <React.Fragment>
-      <Menu />
       <Typography variant="headline" component="h2">
         Cadastro de Atendimento
       </Typography>

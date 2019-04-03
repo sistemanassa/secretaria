@@ -8,7 +8,7 @@ import Add from '../../components/Add/Add';
 import { Menu } from '../../components/Menu/Menu';
 import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
-import Login from '../Login/Login';
+import Login from '../../components/Login/Login';
 import Atendimento from '../../components/Atendimento/Atendimento';
 import { connect } from 'react-redux';
 import { compose } from 'recompose';
@@ -34,7 +34,6 @@ class Home extends Component {
   render() {
     return (
       <div>
-        <Header />
         <Route
           exact
           path={urls.login.path}
@@ -42,11 +41,8 @@ class Home extends Component {
             <NavigationLoggedWrapper component={Login} {...props} />
           )}
         />
-        <Route
-          exact
-          path={urls.home.path}
-          render={props => <NavigationWrapper component={Menu} {...props} />}
-        />
+        <NavigationWrapper component={Header} />
+        <NavigationWrapper component={Menu} />
         <Paper elevation={4} style={{ margin: '16px' }}>
           <Route
             exact
@@ -64,14 +60,14 @@ class Home extends Component {
             path={urls.add.path}
             render={props => <NavigationWrapper component={Add} {...props} />}
           />
-          <Route exact path="/Atendimento" component={Atendimento} />
           <Route
             exact
             path={privateUrls.edit.path}
             render={props => <NavigationWrapper component={Add} {...props} />}
           />
         </Paper>
-        <Footer />
+        <Route exact path="/Atendimento" component={Atendimento} />
+        <NavigationWrapper component={Footer} />
       </div>
     );
   }
