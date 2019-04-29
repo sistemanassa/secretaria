@@ -12,6 +12,7 @@ const styles = {
   },
   textField: {
     width: '100%',
+    marginBottom: '20px',
   },
 };
 
@@ -27,6 +28,7 @@ class Login extends Component {
     const { password } = this.state;
     FirebaseService.login(email, password)
       .then(() => {
+        // eslint-disable-next-line react/prop-types
         this.props.history.push(urls.home.path);
       })
       .catch(error => {
@@ -41,6 +43,7 @@ class Login extends Component {
 
     FirebaseService.createUser(email, password)
       .then(user => {
+        // eslint-disable-next-line react/prop-types
         this.props.history.push(urls.home.path);
         console.log(user);
       })
@@ -59,7 +62,11 @@ class Login extends Component {
     return (
       <Paper elevation={4} style={styles.areaLogin}>
         <Fragment>
-          <Typography variant="headline" component="h2">
+          <Typography
+            variant="headline"
+            component="h2"
+            style={{ marginBottom: '15px' }}
+          >
             Login
           </Typography>
           <form onSubmit={this.login}>
@@ -89,12 +96,12 @@ class Login extends Component {
             </Button>
 
             {/* <Button 
-                        variant="contained"
-                        onClick={this.createUser}
-                        style={{marginTop: '20px', display: 'inline-block'}}
-                    >
-                        New User
-                    </Button> */}
+              variant="contained"
+              onClick={this.createUser}
+              style={{marginTop: '20px', display: 'inline-block'}}
+            >
+              New User
+            </Button> */}
           </form>
         </Fragment>
       </Paper>

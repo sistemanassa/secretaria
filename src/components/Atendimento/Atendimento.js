@@ -2,7 +2,16 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import { withStyles } from '@material-ui/core/styles';
-import { Paper, Toolbar, Typography, List, ListItem, ListItemText, Divider, Avatar } from '@material-ui/core';
+import {
+  Paper,
+  Toolbar,
+  Typography,
+  List,
+  ListItem,
+  ListItemText,
+  Divider,
+  Avatar,
+} from '@material-ui/core';
 import ImageIcon from '@material-ui/icons/Image';
 
 import Video from '../Video/Video';
@@ -49,7 +58,7 @@ const styles = {
   root: {
     width: '100%',
     maxWidth: 360,
-  }
+  },
 };
 
 class Attendance extends Component {
@@ -133,11 +142,15 @@ class Attendance extends Component {
             </Avatar>
             <ListItemText primary="Estácio" secondary="Nova América" />
           </ListItem>
-            <li>
-              <Typography className={classes.dividerFullWidth} color="textSecondary" variant="caption">
-                16:35
-              </Typography>
-            </li>
+          <li>
+            <Typography
+              className={classes.dividerFullWidth}
+              color="textSecondary"
+              variant="caption"
+            >
+              16:35
+            </Typography>
+          </li>
         </List>
       </div>
     );

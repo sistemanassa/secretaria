@@ -13,6 +13,7 @@ import {
 import FirebaseService from '../../services/FirebaseService';
 import { privateUrls } from '../../utils/urlUtils';
 
+// eslint-disable-next-line react/prop-types
 export const DataTable = ({ data }) => {
   const remove = id => {
     FirebaseService.remove(id, 'leituras');

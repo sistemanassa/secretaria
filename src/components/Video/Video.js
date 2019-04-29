@@ -24,7 +24,7 @@ class Video extends Component {
       <CardMedia calssName={classes.pai}>
         <video autoPlay loop muted calssName={classes.media}>
           <source src={video} type="video/mp4" />
-        </video> 
+        </video>
       </CardMedia>
     );
   }

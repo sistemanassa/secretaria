@@ -16,7 +16,7 @@ const styles = {
     position: 'fixed',
     top: 'auto',
     bottom: 0,
-    height: '3vh',
+    height: '30px',
   },
   toolbar: {
     alignItems: 'center',
