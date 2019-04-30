@@ -5,7 +5,7 @@ import { urls } from '../../utils/urlUtils';
 import { withRouter } from 'react-router-dom';
 
 class Add extends Component {
-  state = { id: null, temperatura: '', umidade: '', data: '', cliente: '' };
+  state = { id: null, nome: '', cpf: '', matricula: '', email: '' };
 
   componentWillMount = () => {
     // eslint-disable-next-line react/prop-types
@@ -22,16 +22,16 @@ class Add extends Component {
   submit = event => {
     event.preventDefault();
 
-    const { temperatura } = this.state;
-    const { umidade } = this.state;
-    const { data } = this.state;
-    const { cliente } = this.state;
+    const { nome } = this.state;
+    const { cpf } = this.state;
+    const { matricula } = this.state;
+    const { email } = this.state;
 
     const objToSubmit = {
-      temperatura,
-      umidade,
-      data,
-      cliente,
+      nome,
+      cpf,
+      matricula,
+      email,
     };
 
     // eslint-disable-next-line react/prop-types
@@ -72,10 +72,10 @@ class Add extends Component {
             fullWidth={true}
             className="input-field"
             type="text"
-            value={this.state.temperatura}
-            label="Temperature"
+            value={this.state.nome}
+            label="Nome"
             required
-            onChange={this.handleChange('temperatura')}
+            onChange={this.handleChange('nome')}
             style={{ marginBottom: '20px' }}
           />
 
@@ -83,10 +83,10 @@ class Add extends Component {
             fullWidth={true}
             className="input-field"
             type="text"
-            label="Humidity"
-            value={this.state.umidade}
+            label="CPF"
+            value={this.state.cpf}
             required
-            onChange={this.handleChange('umidade')}
+            onChange={this.handleChange('cpf')}
             style={{ marginBottom: '20px' }}
           />
 
@@ -94,10 +94,10 @@ class Add extends Component {
             fullWidth={true}
             className="input-field"
             type="text"
-            label="Date"
-            value={this.state.data}
+            label="Matrícula"
+            value={this.state.matricula}
             required
-            onChange={this.handleChange('data')}
+            onChange={this.handleChange('matricula')}
             style={{ marginBottom: '20px' }}
           />
 
@@ -105,10 +105,10 @@ class Add extends Component {
             fullWidth={true}
             className="input-field"
             type="email"
-            label="Client"
-            value={this.state.cliente}
+            label="E-mail"
+            value={this.state.email}
             required
-            onChange={this.handleChange('cliente')}
+            onChange={this.handleChange('email')}
             style={{ marginBottom: '20px' }}
           />
 
