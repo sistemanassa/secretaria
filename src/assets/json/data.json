@@ -1,8 +1,8 @@
 [ 
-    { 
-        "nome" : "String",
-        "cpf" : "String",
-        "matricula": "String",
-        "email": "String"
-    }
+  { 
+    "nome" : "String",
+    "cpf" : "String",
+    "matricula": "String",
+    "email": "String"
+  }
 ]
