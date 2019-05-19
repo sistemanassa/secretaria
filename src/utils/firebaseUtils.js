@@ -2,19 +2,19 @@ import firebase from 'firebase';
 
 const prodConfig = {
   apiKey: 'AIzaSyAQMY6sFbrmfe0Qbu925EUxEhFiKYwnNR0',
-  authDomain: 'atendimento-9d6a4.firebaseapp.com',
-  databaseURL: 'https://atendimento-9d6a4.firebaseio.com',
-  projectId: 'atendimento-9d6a4',
-  storageBucket: 'atendimento-9d6a4.appspot.com',
+  authDomain: 'estacio-9d6a4.firebaseapp.com',
+  databaseURL: 'https://estacio-9d6a4.firebaseio.com',
+  projectId: 'estacio-9d6a4',
+  storageBucket: 'estacio-9d6a4.appspot.com',
   messagingSenderId: '696560631149',
 };
 
 const devConfig = {
   apiKey: 'AIzaSyAQMY6sFbrmfe0Qbu925EUxEhFiKYwnNR0',
-  authDomain: 'atendimento-9d6a4.firebaseapp.com',
-  databaseURL: 'https://atendimento-9d6a4.firebaseio.com',
-  projectId: 'atendimento-9d6a4',
-  storageBucket: 'atendimento-9d6a4.appspot.com',
+  authDomain: 'estacio-9d6a4.firebaseapp.com',
+  databaseURL: 'https://estacio-9d6a4.firebaseio.com',
+  projectId: 'estacio-9d6a4',
+  storageBucket: 'estacio-9d6a4.appspot.com',
   messagingSenderId: '696560631149',
 };
 
