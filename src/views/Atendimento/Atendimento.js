@@ -39,7 +39,7 @@ class Home extends Component {
             display: 'grid',
             gridTemplateColumns: '14vw calc(100vw - 14vw)',
             width: '100vw',
-            height: 'calc(100vh - 95px)'
+            height: 'calc(100vh - 95px)',
           }}
         >
           <Paper
@@ -47,7 +47,7 @@ class Home extends Component {
             style={{
               margin: '16px 0 16px 16px',
               padding: '16px',
-              width: 'calc(14vw - 48px)'
+              width: 'calc(14vw - 48px)',
             }}
           >
             <NavigationWrapper component={Menu} />
@@ -57,7 +57,7 @@ class Home extends Component {
             style={{
               margin: '16px',
               padding: '16px',
-              width: 'calc(100vw - 64px - 14vw)'
+              width: 'calc(100vw - 64px - 14vw)',
             }}
           >
             <Route
@@ -83,7 +83,6 @@ class Home extends Component {
             />
           </Paper>
         </div>
-        />
       </div>
     );
   }

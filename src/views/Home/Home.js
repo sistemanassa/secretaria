@@ -34,6 +34,7 @@ class Home extends Component {
   }
 
   render() {
+    // eslint-disable-next-line no-useless-escape
     const notInLoginOrAtendimento = /^(?!.*(\Login|\Atendimento)).*$/;
     return (
       <div>
@@ -53,13 +54,13 @@ class Home extends Component {
         />
         <Route
           path={notInLoginOrAtendimento}
-          render={() =>
+          render={() => (
             <React.Fragment>
               <NavigationWrapper component={Header} />
               <Atendimento />
               <NavigationWrapper component={Footer} />
             </React.Fragment>
-          }
+          )}
         />
       </div>
     );
