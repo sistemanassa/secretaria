@@ -48,6 +48,7 @@ const styles = {
   toolbar: {
     alignItems: 'center',
     justifyContent: 'space-between',
+    height: '100%',
   },
   grow: {
     flexGrow: 1,
