@@ -5,10 +5,6 @@ import { Button, Typography } from '@material-ui/core';
 import { urls } from '../../utils/urlUtils';
 
 export const Menu = () => {
-  const navigateTo = () => {
-    window.open('/Atendimento');
-  };
-
   return (
     <React.Fragment>
       <Typography
@@ -18,25 +14,31 @@ export const Menu = () => {
       >
         Menu
       </Typography>
-      {Object.values(urls).map((url, index) => {
-        return (
-          <Button
-            key={index}
-            component={props => <Link to={url.path} {...props} />}
-            style={{ display: 'block' }}
-          >
-            {url.name}
-          </Button>
-        );
-      })}
-      <Button style={{ display: 'block' }}>
-        <Link
-          to="/Atendimento"
-          onClick={navigateTo}
-          style={{ textDecoration: 'none', color: '#333' }}
-        >
-          Atendimento
-        </Link>
+      <Button
+        component={props => <Link to={urls.home.path} {...props} />}
+        style={{ display: 'block' }}
+      >
+        Home
+      </Button>
+      <Button
+        component={props => <Link to={urls.data.path} {...props} />}
+        style={{ display: 'block' }}
+      >
+        Data
+      </Button>
+      <Button
+        component={props => <Link to={urls.add.path} {...props} />}
+        style={{ display: 'block' }}
+      >
+        Adicionar
+      </Button>
+      <Button
+        component={props => (
+          <Link to={urls.atendimento.path} {...props} target="_blank" />
+        )}
+        style={{ display: 'block' }}
+      >
+        Atendimento
       </Button>
     </React.Fragment>
   );

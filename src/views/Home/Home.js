@@ -10,7 +10,11 @@ import Atendimento from '../../views/Atendimento/Atendimento';
 import { connect } from 'react-redux';
 import { compose } from 'recompose';
 import { login, logout } from '../../action/actionCreator';
+import Header from '../../components/Header/Header';
+import Footer from '../../components/Footer/Footer';
+import AtendimentoComp from '../../components/Atendimento/Atendimento';
 import NavigationLoggedWrapper from '../../components/NavigationWrapper/NavigationLoggedWrapper';
+import NavigationWrapper from '../../components/NavigationWrapper/NavigationWrapper';
 
 class Home extends Component {
   state = {
@@ -30,7 +34,7 @@ class Home extends Component {
   }
 
   render() {
-    const notInLogin = /^(?!.*(\Login)).*$/;
+    const notInLoginOrAtendimento = /^(?!.*(\Login|\Atendimento)).*$/;
     return (
       <div>
         <Route
@@ -40,7 +44,23 @@ class Home extends Component {
             <NavigationLoggedWrapper component={Login} {...props} />
           )}
         />
-        <Route path={notInLogin} render={() => <Atendimento />} />
+        <Route
+          exact
+          path={urls.atendimento.path}
+          render={props => (
+            <NavigationWrapper component={AtendimentoComp} {...props} />
+          )}
+        />
+        <Route
+          path={notInLoginOrAtendimento}
+          render={() =>
+            <React.Fragment>
+              <NavigationWrapper component={Header} />
+              <Atendimento />
+              <NavigationWrapper component={Footer} />
+            </React.Fragment>
+          }
+        />
       </div>
     );
   }

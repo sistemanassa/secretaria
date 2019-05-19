@@ -3,6 +3,7 @@ export const urls = {
   data: { name: 'Data', path: '/Data' },
   add: { name: 'Adicionar', path: '/Add' },
   login: { name: 'Login', path: '/Login' },
+  atendimento: { name: 'Atendimento', path: '/Atendimento' },
 };
 
 export const privateUrls = {
