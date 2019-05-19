@@ -5,10 +5,6 @@ import { Button, Typography } from '@material-ui/core';
 import { urls } from '../../utils/urlUtils';
 
 export const Menu = () => {
-  const navigateTo = () => {
-    window.open('/Atendimento');
-  };
-
   return (
     <React.Fragment>
       <Typography
@@ -37,8 +33,9 @@ export const Menu = () => {
         Adicionar
       </Button>
       <Button
-        component={props => <Link to={urls.atendimento.path} {...props} />}
-        onClick={navigateTo}
+        component={props => (
+          <Link to={urls.atendimento.path} {...props} target="_blank" />
+        )}
         style={{ display: 'block' }}
       >
         Atendimento
