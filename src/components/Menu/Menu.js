@@ -33,9 +33,7 @@ export const Menu = () => {
         Adicionar
       </Button>
       <Button
-        component={props => (
-          <Link to={urls.atendimento.path} {...props} target="_blank" />
-        )}
+        component={props => <Link to={urls.atendimento.path} {...props} />}
         style={{ display: 'block' }}
       >
         Atendimento
