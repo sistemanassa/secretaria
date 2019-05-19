@@ -1,7 +1,7 @@
 {
-  "name": "Atendimento",
+  "name": "Estacio",
   "version": "0.1.0",
-  "homepage": "https://ericfreiresouza.github.io/atendimento/",
+  "homepage": "https://ericfreiresouza.github.io/estacio/",
   "private": true,
   "dependencies": {
     "@material-ui/core": "^3.6.2",
