@@ -21,7 +21,7 @@ class Video extends Component {
   render() {
     const { classes } = this.props;
     return (
-      <CardMedia calssName={classes.pai}>
+      <CardMedia className={classes.pai}>
         <video autoPlay loop muted calssName={classes.media}>
           <source src={video} type="video/mp4" />
         </video>
