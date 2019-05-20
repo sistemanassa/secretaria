@@ -17,8 +17,7 @@
     "react-scripts": "^2.1.8",
     "recompose": "^0.26.0",
     "redux": "^3.7.2",
-    "redux-persist": "^5.9.1",
-    "serve": "^9.4.0"
+    "redux-persist": "^5.9.1"
   },
   "devDependencies": {
     "@babel/core": "^7.3.4",
@@ -52,8 +51,11 @@
     "extends": "react-app"
   },
   "jest": {
+    "setupFiles": [
+      "./setup-jest.js"
+    ],
     "moduleNameMapper": {
-      ".+\\.(svg|css)$": "jest-transform-stub"
+      ".+\\.(svg|css|png|jpeg)$": "jest-transform-stub"
     }
   },
   "browserslist": [
