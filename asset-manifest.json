@@ -1,0 +1,14 @@
+{
+  "main.css": "/estacio/static/css/main.a1e349b8.chunk.css",
+  "main.js": "/estacio/static/js/main.85dbbee6.chunk.js",
+  "main.js.map": "/estacio/static/js/main.85dbbee6.chunk.js.map",
+  "runtime~main.js": "/estacio/static/js/runtime~main.36d7c9a6.js",
+  "runtime~main.js.map": "/estacio/static/js/runtime~main.36d7c9a6.js.map",
+  "static/js/2.b988ba2a.chunk.js": "/estacio/static/js/2.b988ba2a.chunk.js",
+  "static/js/2.b988ba2a.chunk.js.map": "/estacio/static/js/2.b988ba2a.chunk.js.map",
+  "index.html": "/estacio/index.html",
+  "precache-manifest.4e47d42297061f39a5e3bc32d96f9fb5.js": "/estacio/precache-manifest.4e47d42297061f39a5e3bc32d96f9fb5.js",
+  "service-worker.js": "/estacio/service-worker.js",
+  "static/css/main.a1e349b8.chunk.css.map": "/estacio/static/css/main.a1e349b8.chunk.css.map",
+  "static/media/movie.mp4": "/estacio/static/media/movie.3cf571d4.mp4"
+}
