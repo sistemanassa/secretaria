@@ -24,19 +24,19 @@ const styles = {
   },
   gridRow: {
     display: 'grid',
-    gridTemplateColumns: 'calc(100vw - 64px - 40vw) 40vw',
+    gridTemplateColumns: 'calc(100vw - 79px - 40vw) 40vw',
+    width: 'calc(100vw - 79px)',
   },
   gridRowSup: {
-    width: 'calc(100vw - 64px)',
     height: 'calc(100vh - 26.8vh)',
   },
   gridRowInf: {
-    width: 'calc(100vw - 64px)',
     height: 'calc(100vh - 80vh)',
     borderTop: '1px solid darkgrey',
   },
   containerLeft: {
-    width: 'calc(100vw - 64px - 40vw)',
+    width: 'calc(100vw - 79px - 40vw)',
+    position: 'relative',
   },
   containerRight: {
     width: '40vw',
@@ -78,7 +78,7 @@ class Attendance extends Component {
   renderVideo = () => {
     const { classes } = this.props;
     return (
-      <div className={classes.containerLeft}>
+      <div className={classes.containerLeft} style={{ overflow: 'hidden' }}>
         <Video />
       </div>
     );

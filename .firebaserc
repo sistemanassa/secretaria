@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "estacio"
+    "default": "estacio",
+    "build": "atendimento-9d6a4"
   }
 }

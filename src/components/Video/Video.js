@@ -6,9 +6,18 @@ import video from '../../assets/video/movie.mp4';
 
 const styles = {
   media: {
-    width: '100%',
-    height: '100%',
-    maxHeight: '100%',
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    minWidth: '100%',
+    minHeight: '100%',
+    width: 'auto',
+    height: 'auto',
+    zIndex: '-100',
+    transform: 'translateX(-50%) translateY(-50%)',
+    // background: 'url('seuthumbnail.jpg') no-repeat',
+    backgroundSize: 'cover',
+    transition: '1s opacity',
   },
 };
 
