@@ -1,6 +1,8 @@
 [ 
-    { 
-        "email" : "String",
-        "password": "String"
-    }
+  { 
+    "nome": "String",
+    "email" : "String",
+    "password": "String",
+    "guiche": "String"
+  }
 ]

@@ -91,19 +91,19 @@ class Attendance extends Component {
         {/* <p>Ultimas Chamadas</p> */}
         <List>
           <ListItem>
-            <ListItemText primary="G3 - Fulano de Tal" secondary="Histórico" />
+            <ListItemText primary="G1 - Nome" secondary="Assunto" />
           </ListItem>
           <Divider component="li" />
         </List>
         <List>
           <ListItem>
-            <ListItemText primary="G3 - Fulano de Tal" secondary="Histórico" />
+            <ListItemText primary="G2 - Nome" secondary="Assunto" />
           </ListItem>
           <Divider component="li" />
         </List>
         <List>
           <ListItem>
-            <ListItemText primary="G3 - Fulano de Tal" secondary="Histórico" />
+            <ListItemText primary="G3 - Nome" secondary="Assunto" />
           </ListItem>
         </List>
       </div>
@@ -121,7 +121,7 @@ class Attendance extends Component {
             color="inherit"
             className={classes.grow}
           >
-            Fulano de Tal
+            Nome
           </Typography>
           <Typography variant="subtitle1" color="inherit">
             Guichê 3

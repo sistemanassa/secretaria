@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import DeleteIcon from '@material-ui/icons/Delete';
 import {
   Icon,
   Button,
@@ -9,6 +10,8 @@ import {
   TableHead,
   TableRow,
   Typography,
+  IconButton,
+  Toolbar,
 } from '@material-ui/core';
 import FirebaseService from '../../services/FirebaseService';
 import { privateUrls } from '../../utils/urlUtils';
@@ -21,9 +24,26 @@ export const DataTable = ({ data }) => {
 
   return (
     <React.Fragment>
-      <Typography variant="headline" component="h2">
-        Cadastro de Atendimento
-      </Typography>
+      <Toolbar
+        style={{
+          alignItems: 'center',
+          justifyContent: 'space-between',
+        }}
+      >
+        <Typography variant="headline" component="h2">
+          Cadastro de Atendimento
+        </Typography>
+        <Button
+          variant="contained"
+          color="primary"
+          title="Chamar"
+          style={{ background: '#4caf50' }}
+          // onclick={() => remove(item.key)}
+        >
+          Chamar
+        </Button>
+      </Toolbar>
+
       <Table selectable="false">
         <TableHead>
           <TableRow>
@@ -31,7 +51,9 @@ export const DataTable = ({ data }) => {
             <TableCell>Nome</TableCell>
             <TableCell>CPF</TableCell>
             <TableCell>Matrícula</TableCell>
+            <TableCell>Assunto</TableCell>
             <TableCell>E-mail</TableCell>
+            <TableCell />
             <TableCell />
           </TableRow>
         </TableHead>
@@ -42,10 +64,12 @@ export const DataTable = ({ data }) => {
               <TableCell>{item.nome}</TableCell>
               <TableCell>{item.cpf}</TableCell>
               <TableCell>{item.matricula}</TableCell>
+              <TableCell>{item.assunto}</TableCell>
               <TableCell>{item.email}</TableCell>
-              <TableCell>
-                <Button
-                  variant="contained"
+              <TableCell style={{ padding: '4px' }}>
+                <IconButton
+                  aria-label="Edit"
+                  color="primary"
                   title="Editar"
                   component={props => (
                     <Link
@@ -55,15 +79,18 @@ export const DataTable = ({ data }) => {
                   )}
                 >
                   <Icon>edit</Icon>
-                </Button>
-
-                <Button
-                  variant="contained"
+                </IconButton>
+              </TableCell>
+              <TableCell style={{ padding: '4px' }}>
+                <IconButton
+                  // className={classes.button}
+                  aria-label="Delete"
+                  color="primary"
                   title="Remover"
                   onClick={() => remove(item.key)}
                 >
-                  <Icon>close</Icon>
-                </Button>
+                  <DeleteIcon />
+                </IconButton>
               </TableCell>
             </TableRow>
           ))}

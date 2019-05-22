@@ -14,6 +14,10 @@ const styles = {
     width: '100%',
     marginBottom: '20px',
   },
+  btn: {
+    marginTop: '20px',
+    display: 'inline-block',
+  },
 };
 
 class Login extends Component {
@@ -87,18 +91,14 @@ class Login extends Component {
               onChange={this.handleChange('password')}
             />
 
-            <Button
-              variant="contained"
-              type="submit"
-              style={{ marginTop: '20px', display: 'inline-block' }}
-            >
+            <Button variant="contained" type="submit" style={styles.btn}>
               Login
             </Button>
 
             {/* <Button
               variant="contained"
               onClick={this.createUser}
-              style={{marginTop: '20px', display: 'inline-block'}}
+              style={styles.btn}
             >
               New User
             </Button> */}

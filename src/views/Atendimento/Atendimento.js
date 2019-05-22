@@ -58,29 +58,36 @@ class Home extends Component {
               margin: '16px',
               padding: '16px',
               width: 'calc(100vw - 64px - 14vw)',
+              overflow: 'hidden',
             }}
           >
-            <Route
-              exact
-              path={urls.data.path}
-              render={props => (
-                <NavigationWrapper
-                  component={DataTable}
-                  {...props}
-                  data={this.state.data}
-                />
-              )}
-            />
-            <Route
-              exact
-              path={urls.add.path}
-              render={props => <NavigationWrapper component={Add} {...props} />}
-            />
-            <Route
-              exact
-              path={privateUrls.edit.path}
-              render={props => <NavigationWrapper component={Add} {...props} />}
-            />
+            <div style={{ overflow: 'auto', height: 'calc(100vh - 158px)' }}>
+              <Route
+                exact
+                path={urls.data.path}
+                render={props => (
+                  <NavigationWrapper
+                    component={DataTable}
+                    {...props}
+                    data={this.state.data}
+                  />
+                )}
+              />
+              <Route
+                exact
+                path={urls.add.path}
+                render={props => (
+                  <NavigationWrapper component={Add} {...props} />
+                )}
+              />
+              <Route
+                exact
+                path={privateUrls.edit.path}
+                render={props => (
+                  <NavigationWrapper component={Add} {...props} />
+                )}
+              />
+            </div>
           </Paper>
         </div>
       </div>

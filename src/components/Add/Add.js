@@ -5,7 +5,14 @@ import { urls } from '../../utils/urlUtils';
 import { withRouter } from 'react-router-dom';
 
 class Add extends Component {
-  state = { id: null, nome: '', cpf: '', matricula: '', email: '' };
+  state = {
+    id: null,
+    nome: '',
+    cpf: '',
+    matricula: '',
+    assunto: '',
+    email: '',
+  };
 
   componentWillMount = () => {
     // eslint-disable-next-line react/prop-types
@@ -25,12 +32,14 @@ class Add extends Component {
     const { nome } = this.state;
     const { cpf } = this.state;
     const { matricula } = this.state;
+    const { assunto } = this.state;
     const { email } = this.state;
 
     const objToSubmit = {
       nome,
       cpf,
       matricula,
+      assunto,
       email,
     };
 
@@ -98,6 +107,17 @@ class Add extends Component {
             value={this.state.matricula}
             required
             onChange={this.handleChange('matricula')}
+            style={{ marginBottom: '20px' }}
+          />
+
+          <TextField
+            fullWidth={true}
+            className="input-field"
+            type="text"
+            label="Assunto"
+            value={this.state.assunto}
+            required
+            onChange={this.handleChange('assunto')}
             style={{ marginBottom: '20px' }}
           />
 

@@ -68,14 +68,22 @@ const TopBar = ({ userAuth, logout, classes }) => (
           >
             Usuário: {userAuth.email}
           </Typography>
+          <Typography
+            type="title"
+            color="inherit"
+            style={{ marginLeft: '20px' }}
+          >
+            Guiche: {userAuth.guiche}
+          </Typography>
 
           {/* <IconButton color="inherit" aria-label="Menu" onClick={() => logout()}>
             <Icon>arrow_forward</Icon>
           </IconButton> */}
           <Button
             variant="contained"
-            style={{ marginLeft: '10px' }}
+            style={{ marginLeft: '10px', fontSize: '0.875rem' }}
             onClick={() => logout()}
+            title="Logout"
           >
             Logout
           </Button>
