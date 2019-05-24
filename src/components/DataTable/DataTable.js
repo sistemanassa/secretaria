@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import DeleteIcon from '@material-ui/icons/Delete';
 import {
   Icon,
-  Button,
   Table,
   TableBody,
   TableCell,
@@ -33,15 +32,6 @@ export const DataTable = ({ data }) => {
         <Typography variant="headline" component="h2">
           Cadastro de Atendimento
         </Typography>
-        <Button
-          variant="contained"
-          color="primary"
-          title="Chamar"
-          style={{ background: '#4caf50' }}
-          // onclick={() => remove(item.key)}
-        >
-          Chamar
-        </Button>
       </Toolbar>
 
       <Table selectable="false">

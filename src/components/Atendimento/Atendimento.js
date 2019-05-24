@@ -91,19 +91,19 @@ class Attendance extends Component {
         {/* <p>Ultimas Chamadas</p> */}
         <List>
           <ListItem>
-            <ListItemText primary="G1 - Nome" secondary="Assunto" />
+            <ListItemText primary="G1 - Nome" />
           </ListItem>
           <Divider component="li" />
         </List>
         <List>
           <ListItem>
-            <ListItemText primary="G2 - Nome" secondary="Assunto" />
+            <ListItemText primary="G2 - Nome" />
           </ListItem>
           <Divider component="li" />
         </List>
         <List>
           <ListItem>
-            <ListItemText primary="G3 - Nome" secondary="Assunto" />
+            <ListItemText primary="G3 - Nome" />
           </ListItem>
         </List>
       </div>

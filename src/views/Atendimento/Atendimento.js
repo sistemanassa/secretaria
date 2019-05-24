@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Route, withRouter } from 'react-router-dom';
-import { Paper } from '@material-ui/core';
+import { Paper, withStyles } from '@material-ui/core';
 
 import FirebaseService from '../../services/FirebaseService';
 import { privateUrls, urls } from '../../utils/urlUtils';
 
-import { Menu } from '../../components/Menu/Menu';
+import Menu from '../../components/Menu/Menu';
 import { DataTable } from '../../components/DataTable/DataTable';
 import Add from '../../components/Add/Add';
 
@@ -14,9 +15,41 @@ import { compose } from 'recompose';
 import { login, logout } from '../../action/actionCreator';
 import NavigationWrapper from '../../components/NavigationWrapper/NavigationWrapper';
 
+const styles = {
+  gridRow: {
+    display: 'grid',
+    gridTemplateColumns: '14vw calc(100vw - 14vw)',
+    width: '100vw',
+    height: 'calc(100vh - 95px)',
+  },
+  menu: {
+    overflow: 'auto',
+    height: 'calc(100vh - 158px)',
+  },
+  paperMenu: {
+    margin: '16px 0 16px 16px',
+    padding: '16px',
+    width: 'calc(14vw - 48px)',
+  },
+  paperContent: {
+    margin: '16px',
+    padding: '16px',
+    width: 'calc(100vw - 64px - 14vw)',
+    overflow: 'hidden',
+  },
+  routeContent: {
+    overflow: 'auto',
+    height: 'calc(100vh - 158px)',
+  },
+};
+
 class Home extends Component {
   state = {
     data: [],
+  };
+
+  static propTypes = {
+    classes: PropTypes.object.isRequired,
   };
 
   componentDidMount() {
@@ -32,36 +65,17 @@ class Home extends Component {
   }
 
   render() {
+    const { classes } = this.props;
     return (
       <div>
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: '14vw calc(100vw - 14vw)',
-            width: '100vw',
-            height: 'calc(100vh - 95px)',
-          }}
-        >
-          <Paper
-            elevation={4}
-            style={{
-              margin: '16px 0 16px 16px',
-              padding: '16px',
-              width: 'calc(14vw - 48px)',
-            }}
-          >
-            <NavigationWrapper component={Menu} />
+        <div className={classes.gridRow}>
+          <Paper className={classes.paperMenu} elevation={4}>
+            <div className={classes.menu}>
+              <NavigationWrapper component={Menu} />
+            </div>
           </Paper>
-          <Paper
-            elevation={4}
-            style={{
-              margin: '16px',
-              padding: '16px',
-              width: 'calc(100vw - 64px - 14vw)',
-              overflow: 'hidden',
-            }}
-          >
-            <div style={{ overflow: 'auto', height: 'calc(100vh - 158px)' }}>
+          <Paper className={classes.paperContent} elevation={4}>
+            <div className={classes.routeContent}>
               <Route
                 exact
                 path={urls.data.path}
@@ -103,6 +117,7 @@ const mapDispatchToProps = dispatch => {
 };
 
 export default compose(
+  withStyles(styles),
   withRouter,
   connect(
     null,

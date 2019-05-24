@@ -13,7 +13,6 @@ import {
   Button,
 } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
-// import Icon from '@material-ui/core/Icon';
 
 import { urls } from '../../utils/urlUtils';
 import { logout } from '../../action/actionCreator';
@@ -24,6 +23,10 @@ const styles = {
   },
   flex: {
     flex: 1,
+  },
+  btn: {
+    marginLeft: '20px',
+    fontSize: '0.875rem',
   },
 };
 
@@ -73,15 +76,12 @@ const TopBar = ({ userAuth, logout, classes }) => (
             color="inherit"
             style={{ marginLeft: '20px' }}
           >
-            Guiche: {userAuth.guiche}
+            Guichê: {userAuth.guiche}
           </Typography>
 
-          {/* <IconButton color="inherit" aria-label="Menu" onClick={() => logout()}>
-            <Icon>arrow_forward</Icon>
-          </IconButton> */}
           <Button
             variant="contained"
-            style={{ marginLeft: '10px', fontSize: '0.875rem' }}
+            className={classes.btn}
             onClick={() => logout()}
             title="Logout"
           >
