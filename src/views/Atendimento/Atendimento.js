@@ -7,6 +7,7 @@ import FirebaseService from '../../services/FirebaseService';
 import { privateUrls, urls } from '../../utils/urlUtils';
 
 import Menu from '../../components/Menu/Menu';
+import Guiche from '../../components/Guiche/Guiche';
 import { DataTable } from '../../components/DataTable/DataTable';
 import Add from '../../components/Add/Add';
 
@@ -72,21 +73,11 @@ class Home extends Component {
           <Paper className={classes.paperMenu} elevation={4}>
             <div className={classes.menu}>
               <NavigationWrapper component={Menu} />
+              <NavigationWrapper component={Guiche} />
             </div>
           </Paper>
           <Paper className={classes.paperContent} elevation={4}>
             <div className={classes.routeContent}>
-              <Route
-                exact
-                path={urls.data.path}
-                render={props => (
-                  <NavigationWrapper
-                    component={DataTable}
-                    {...props}
-                    data={this.state.data}
-                  />
-                )}
-              />
               <Route
                 exact
                 path={urls.add.path}
@@ -99,6 +90,17 @@ class Home extends Component {
                 path={privateUrls.edit.path}
                 render={props => (
                   <NavigationWrapper component={Add} {...props} />
+                )}
+              />
+              <Route
+                exact
+                path={urls.data.path}
+                render={props => (
+                  <NavigationWrapper
+                    component={DataTable}
+                    {...props}
+                    data={this.state.data}
+                  />
                 )}
               />
             </div>
