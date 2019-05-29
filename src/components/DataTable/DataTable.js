@@ -8,6 +8,7 @@ import {
   TableCell,
   TableHead,
   TableRow,
+  TablePagination,
   Typography,
   IconButton,
   Toolbar,
@@ -17,8 +18,21 @@ import { privateUrls } from '../../utils/urlUtils';
 
 // eslint-disable-next-line react/prop-types
 export const DataTable = ({ data }) => {
+  const [page, setPage] = React.useState(0);
+  const [rowsPerPage, setRowsPerPage] = React.useState(10);
+  const emptyRows =
+    rowsPerPage - Math.min(rowsPerPage, data.length - page * rowsPerPage);
+
   const remove = id => {
     FirebaseService.remove(id, 'leituras');
+  };
+
+  const handleChangeRowsPerPage = event => {
+    setRowsPerPage(+event.target.value);
+  };
+
+  const handleChangePage = (event, newPage) => {
+    setPage(newPage);
   };
 
   return (
@@ -48,44 +62,66 @@ export const DataTable = ({ data }) => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {data.map((item, index) => (
-            <TableRow key={index}>
-              <TableCell>{item.key}</TableCell>
-              <TableCell>{item.nome}</TableCell>
-              <TableCell>{item.cpf}</TableCell>
-              <TableCell>{item.matricula}</TableCell>
-              <TableCell>{item.assunto}</TableCell>
-              <TableCell>{item.email}</TableCell>
-              <TableCell style={{ padding: '4px' }}>
-                <IconButton
-                  aria-label="Edit"
-                  color="primary"
-                  title="Editar"
-                  component={props => (
-                    <Link
-                      to={privateUrls.edit.pathWithouParam + item.key}
-                      {...props}
-                    />
-                  )}
-                >
-                  <Icon>edit</Icon>
-                </IconButton>
-              </TableCell>
-              <TableCell style={{ padding: '4px' }}>
-                <IconButton
-                  // className={classes.button}
-                  aria-label="Delete"
-                  color="primary"
-                  title="Remover"
-                  onClick={() => remove(item.key)}
-                >
-                  <DeleteIcon />
-                </IconButton>
-              </TableCell>
+          {data
+            .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+            .map((item, index) => (
+              <TableRow key={index}>
+                <TableCell>{item.key}</TableCell>
+                <TableCell>{item.nome}</TableCell>
+                <TableCell>{item.cpf}</TableCell>
+                <TableCell>{item.matricula}</TableCell>
+                <TableCell>{item.assunto}</TableCell>
+                <TableCell>{item.email}</TableCell>
+                <TableCell style={{ padding: '4px' }}>
+                  <IconButton
+                    aria-label="Edit"
+                    color="primary"
+                    title="Editar"
+                    component={props => (
+                      <Link
+                        to={privateUrls.edit.pathWithouParam + item.key}
+                        {...props}
+                      />
+                    )}
+                  >
+                    <Icon>edit</Icon>
+                  </IconButton>
+                </TableCell>
+                <TableCell style={{ padding: '4px' }}>
+                  <IconButton
+                    // className={classes.button}
+                    aria-label="Delete"
+                    color="primary"
+                    title="Remover"
+                    onClick={() => remove(item.key)}
+                  >
+                    <DeleteIcon />
+                  </IconButton>
+                </TableCell>
+              </TableRow>
+            ))}
+          {emptyRows > 0 && (
+            <TableRow style={{ height: 49 * emptyRows }}>
+              <TableCell colSpan={8} />
             </TableRow>
-          ))}
+          )}
         </TableBody>
       </Table>
+      <TablePagination
+        rowsPerPageOptions={[5, 10, 25]}
+        component="div"
+        count={data.length}
+        rowsPerPage={rowsPerPage}
+        page={page}
+        backIconButtonProps={{
+          'aria-label': 'Previous Page',
+        }}
+        nextIconButtonProps={{
+          'aria-label': 'Next Page',
+        }}
+        onChangePage={handleChangePage}
+        onChangeRowsPerPage={handleChangeRowsPerPage}
+      />
     </React.Fragment>
   );
 };

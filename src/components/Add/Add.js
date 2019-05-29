@@ -91,7 +91,7 @@ class Add extends Component {
           <TextField
             fullWidth={true}
             className="input-field"
-            type="text"
+            type="number"
             label="CPF"
             value={this.state.cpf}
             required
@@ -102,7 +102,7 @@ class Add extends Component {
           <TextField
             fullWidth={true}
             className="input-field"
-            type="text"
+            type="number"
             label="Matrícula"
             value={this.state.matricula}
             required
