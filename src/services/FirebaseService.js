@@ -1,8 +1,8 @@
 import { firebaseDatabase, firebaseAuth } from '../utils/firebaseUtils';
 
 export default class FirebaseService {
-  static getDataList = (nodePath, callback, size = 10) => {
-    const query = firebaseDatabase.ref(nodePath).limitToLast(size);
+  static getDataList = (nodePath, callback) => {
+    const query = firebaseDatabase.ref(nodePath);
     query.on('value', dataSnapshot => {
       const items = [];
       dataSnapshot.forEach(childSnapshot => {
