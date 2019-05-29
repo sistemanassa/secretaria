@@ -4,6 +4,7 @@
     "cpf" : "String",
     "matricula": "String",
     "assunto": "String",
-    "email": "String"
+    "email": "String",
+    "guiche": "String"
   }
 ]

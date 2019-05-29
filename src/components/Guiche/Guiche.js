@@ -71,6 +71,12 @@ const styles = {
   btnRed: {
     background: 'red',
     width: '100%',
+    marginBottom: '20px',
+  },
+  btnDefault: {
+    // background: 'red',
+    width: '100%',
+    marginBottom: '20px',
   },
   btnMenu: {
     display: 'block',
@@ -146,6 +152,16 @@ class Guiche extends Component {
           disabled={!this.isValid()}
         >
           Encerrar
+        </Button>
+
+        <Button
+          variant="contained"
+          title="Cancelar"
+          className={classes.btnDefault}
+          // onclick={() => remove(item.key)}
+          disabled={!this.isValid()}
+        >
+          Cancelar
         </Button>
       </React.Fragment>
     );
