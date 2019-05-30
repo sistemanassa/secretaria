@@ -51,12 +51,13 @@ export const DataTable = ({ data }) => {
       <Table selectable="false">
         <TableHead>
           <TableRow>
-            <TableCell>Key</TableCell>
+            {/* <TableCell>Key</TableCell> */}
             <TableCell>Nome</TableCell>
             <TableCell>CPF</TableCell>
             <TableCell>Matrícula</TableCell>
             <TableCell>Assunto</TableCell>
             <TableCell>E-mail</TableCell>
+            <TableCell>Status</TableCell>
             <TableCell />
             <TableCell />
           </TableRow>
@@ -66,12 +67,13 @@ export const DataTable = ({ data }) => {
             .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
             .map((item, index) => (
               <TableRow key={index}>
-                <TableCell>{item.key}</TableCell>
+                {/* <TableCell>{item.key}</TableCell> */}
                 <TableCell>{item.nome}</TableCell>
                 <TableCell>{item.cpf}</TableCell>
                 <TableCell>{item.matricula}</TableCell>
                 <TableCell>{item.assunto}</TableCell>
                 <TableCell>{item.email}</TableCell>
+                <TableCell>{item.status}</TableCell>
                 <TableCell style={{ padding: '4px' }}>
                   <IconButton
                     aria-label="Edit"

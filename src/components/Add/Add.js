@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Button, TextField, Typography } from '@material-ui/core';
 import FirebaseService from '../../services/FirebaseService';
-import { urls } from '../../utils/urlUtils';
+// import { urls } from '../../utils/urlUtils';
 import { withRouter } from 'react-router-dom';
 
 class Add extends Component {
@@ -12,6 +12,7 @@ class Add extends Component {
     matricula: '',
     assunto: '',
     email: '',
+    status: '',
   };
 
   componentWillMount = () => {
@@ -34,6 +35,7 @@ class Add extends Component {
     const { matricula } = this.state;
     const { assunto } = this.state;
     const { email } = this.state;
+    const { status } = this.state;
 
     const objToSubmit = {
       nome,
@@ -41,6 +43,7 @@ class Add extends Component {
       matricula,
       assunto,
       email,
+      status,
     };
 
     // eslint-disable-next-line react/prop-types
@@ -56,7 +59,19 @@ class Add extends Component {
     }
 
     // eslint-disable-next-line react/prop-types
-    this.props.history.push(urls.data.path);
+    // this.props.history.push(urls.data.path);
+    this.clearFields();
+  };
+
+  clearFields = () => {
+    this.setState({
+      nome: '',
+      cpf: '',
+      matricula: '',
+      assunto: '',
+      email: '',
+      status: '',
+    });
   };
 
   handleChange = name => event => {
@@ -129,6 +144,17 @@ class Add extends Component {
             value={this.state.email}
             required
             onChange={this.handleChange('email')}
+            style={{ marginBottom: '20px' }}
+          />
+
+          <TextField
+            fullWidth={true}
+            className="input-field"
+            type="text"
+            label="Status"
+            value={this.state.status}
+            required
+            onChange={this.handleChange('status')}
             style={{ marginBottom: '20px' }}
           />
 

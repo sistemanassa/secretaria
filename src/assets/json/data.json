@@ -5,6 +5,7 @@
     "matricula": "String",
     "assunto": "String",
     "email": "String",
-    "guiche": "String"
+    "guiche": "String",
+    "status": "String"
   }
 ]
