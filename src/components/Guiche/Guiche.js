@@ -73,8 +73,9 @@ const styles = {
     width: '100%',
     marginBottom: '20px',
   },
-  btnDefault: {
-    // background: 'red',
+  btnYellow: {
+    backgroundColor: '#ffba01',
+    color: '#000',
     width: '100%',
     marginBottom: '20px',
   },
@@ -95,6 +96,18 @@ class Guiche extends Component {
   static propTypes = {
     classes: PropTypes.object.isRequired,
   };
+
+  // startAttendance = () => {
+
+  // };
+
+  // endService = () => {
+
+  // };
+
+  // cancelService = () => {
+
+  // };
 
   handleChangeGuiche = evt => {
     this.setState({ guiche: evt.target.value });
@@ -137,7 +150,7 @@ class Guiche extends Component {
           color="primary"
           title="Iniciar"
           className={classes.btnGreen}
-          // onclick={() => remove(item.key)}
+          // onclick={() => this.startAttendance()}
           disabled={!this.isValid()}
         >
           Iniciar
@@ -147,8 +160,8 @@ class Guiche extends Component {
           variant="contained"
           color="primary"
           title="Encerrar"
-          className={classes.btnRed}
-          // onclick={() => remove(item.key)}
+          className={classes.btnYellow}
+          // onclick={() => this.endService()}
           disabled={!this.isValid()}
         >
           Encerrar
@@ -156,9 +169,10 @@ class Guiche extends Component {
 
         <Button
           variant="contained"
+          color="primary"
           title="Cancelar"
-          className={classes.btnDefault}
-          // onclick={() => remove(item.key)}
+          className={classes.btnRed}
+          // onclick={() => this.cancelService()}
           disabled={!this.isValid()}
         >
           Cancelar

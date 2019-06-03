@@ -35,7 +35,6 @@ class Add extends Component {
     const { matricula } = this.state;
     const { assunto } = this.state;
     const { email } = this.state;
-    const { status } = this.state;
 
     const objToSubmit = {
       nome,
@@ -43,7 +42,6 @@ class Add extends Component {
       matricula,
       assunto,
       email,
-      status,
     };
 
     // eslint-disable-next-line react/prop-types
@@ -70,7 +68,6 @@ class Add extends Component {
       matricula: '',
       assunto: '',
       email: '',
-      status: '',
     });
   };
 
@@ -144,17 +141,6 @@ class Add extends Component {
             value={this.state.email}
             required
             onChange={this.handleChange('email')}
-            style={{ marginBottom: '20px' }}
-          />
-
-          <TextField
-            fullWidth={true}
-            className="input-field"
-            type="text"
-            label="Status"
-            value={this.state.status}
-            required
-            onChange={this.handleChange('status')}
             style={{ marginBottom: '20px' }}
           />
 

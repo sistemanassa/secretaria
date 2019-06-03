@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import DeleteIcon from '@material-ui/icons/Delete';
 import {
@@ -13,11 +14,44 @@ import {
   IconButton,
   Toolbar,
 } from '@material-ui/core';
+import { withStyles } from '@material-ui/core/styles';
 import FirebaseService from '../../services/FirebaseService';
 import { privateUrls } from '../../utils/urlUtils';
 
+const styles = {
+  btn: {
+    textTransform: 'none',
+    padding: '1px 5px',
+    width: '5em',
+    minHeight: '1em',
+    display: 'block',
+    textAlign: 'center',
+    lineHeight: '2',
+    boxShadow:
+      '0px 1px 5px 0px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 3px 1px -2px rgba(0, 0, 0, 0.12)',
+    borderRadius: '4px',
+    boxSizing: 'border-box',
+  },
+  btnGreen: {
+    backgroundColor: 'green',
+    color: '#fff',
+  },
+  btnRed: {
+    backgroundColor: 'red',
+    color: '#fff',
+  },
+  btnYellow: {
+    backgroundColor: '#ffba01',
+    color: '#000',
+  },
+  btnBlack: {
+    backgroundColor: '#000',
+    color: '#fff',
+  },
+};
+
 // eslint-disable-next-line react/prop-types
-export const DataTable = ({ data }) => {
+const DataTable = ({ data }) => {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
   const emptyRows =
@@ -35,8 +69,39 @@ export const DataTable = ({ data }) => {
     setPage(newPage);
   };
 
+  const renderStatus = rowData => {
+    console.log('ROW: ', rowData);
+    const { classes } = this.props;
+
+    if (rowData.status.cancelado === 'cancelado') {
+      return (
+        <span className={classes.btn} style={styles.btnRed}>
+          Cancelado
+        </span>
+      );
+    } else if (rowData.status.atendimento === 'atendimento') {
+      return (
+        <span className={classes.btn} style={styles.btnGreen}>
+          Atendimento
+        </span>
+      );
+    } else if (rowData.status.encerrado === 'encerrado') {
+      return (
+        <span className={classes.btn} style={styles.btnYellow}>
+          Encerrado
+        </span>
+      );
+    } else {
+      return (
+        <span className={classes.btn} style={styles.btnBlack}>
+          Aguardando
+        </span>
+      );
+    }
+  };
+
   return (
-    <React.Fragment>
+    <div>
       <Toolbar
         style={{
           alignItems: 'center',
@@ -73,7 +138,12 @@ export const DataTable = ({ data }) => {
                 <TableCell>{item.matricula}</TableCell>
                 <TableCell>{item.assunto}</TableCell>
                 <TableCell>{item.email}</TableCell>
-                <TableCell>{item.status}</TableCell>
+                <TableCell>
+                  {data.map(row => {
+                    row.status = renderStatus(row);
+                    return row;
+                  })}
+                </TableCell>
                 <TableCell style={{ padding: '4px' }}>
                   <IconButton
                     aria-label="Edit"
@@ -91,7 +161,6 @@ export const DataTable = ({ data }) => {
                 </TableCell>
                 <TableCell style={{ padding: '4px' }}>
                   <IconButton
-                    // className={classes.button}
                     aria-label="Delete"
                     color="primary"
                     title="Remover"
@@ -124,6 +193,12 @@ export const DataTable = ({ data }) => {
         onChangePage={handleChangePage}
         onChangeRowsPerPage={handleChangeRowsPerPage}
       />
-    </React.Fragment>
+    </div>
   );
 };
+
+DataTable.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
+
+export default withStyles(styles)(DataTable);

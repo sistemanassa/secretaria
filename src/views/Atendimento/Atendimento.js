@@ -8,7 +8,7 @@ import { privateUrls, urls } from '../../utils/urlUtils';
 
 import Menu from '../../components/Menu/Menu';
 import Guiche from '../../components/Guiche/Guiche';
-import { DataTable } from '../../components/DataTable/DataTable';
+import DataTable from '../../components/DataTable/DataTable';
 import Add from '../../components/Add/Add';
 
 import { connect } from 'react-redux';
