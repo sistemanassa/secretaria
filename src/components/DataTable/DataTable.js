@@ -69,36 +69,36 @@ const DataTable = ({ data }) => {
     setPage(newPage);
   };
 
-  const renderStatus = rowData => {
-    console.log('ROW: ', rowData);
-    const { classes } = this.props;
+  // const renderStatus = rowData => {
+  //   console.log('ROW: ', rowData);
+  //   const { classes } = this.props;
 
-    if (rowData.status.cancelado === 'cancelado') {
-      return (
-        <span className={classes.btn} style={styles.btnRed}>
-          Cancelado
-        </span>
-      );
-    } else if (rowData.status.atendimento === 'atendimento') {
-      return (
-        <span className={classes.btn} style={styles.btnGreen}>
-          Atendimento
-        </span>
-      );
-    } else if (rowData.status.encerrado === 'encerrado') {
-      return (
-        <span className={classes.btn} style={styles.btnYellow}>
-          Encerrado
-        </span>
-      );
-    } else {
-      return (
-        <span className={classes.btn} style={styles.btnBlack}>
-          Aguardando
-        </span>
-      );
-    }
-  };
+  //   if (rowData.status === 'cancelado') {
+  //     return (
+  //       <span className={classes.btn} style={styles.btnRed}>
+  //         Cancelado
+  //       </span>
+  //     );
+  //   } else if (rowData.status === 'atendimento') {
+  //     return (
+  //       <span className={classes.btn} style={styles.btnGreen}>
+  //         Atendimento
+  //       </span>
+  //     );
+  //   } else if (rowData.status === 'encerrado') {
+  //     return (
+  //       <span className={classes.btn} style={styles.btnYellow}>
+  //         Encerrado
+  //       </span>
+  //     );
+  //   } else {
+  //     return (
+  //       <span className={classes.btn} style={styles.btnBlack}>
+  //         Aguardando
+  //       </span>
+  //     );
+  //   }
+  // };
 
   return (
     <div>
@@ -138,12 +138,7 @@ const DataTable = ({ data }) => {
                 <TableCell>{item.matricula}</TableCell>
                 <TableCell>{item.assunto}</TableCell>
                 <TableCell>{item.email}</TableCell>
-                <TableCell>
-                  {data.map(row => {
-                    row.status = renderStatus(row);
-                    return row;
-                  })}
-                </TableCell>
+                <TableCell>{item.status}</TableCell>
                 <TableCell style={{ padding: '4px' }}>
                   <IconButton
                     aria-label="Edit"

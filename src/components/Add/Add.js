@@ -12,7 +12,7 @@ class Add extends Component {
     matricula: '',
     assunto: '',
     email: '',
-    status: '',
+    status: 'Aguardando',
   };
 
   componentWillMount = () => {
@@ -70,7 +70,6 @@ class Add extends Component {
       matricula: '',
       assunto: '',
       email: '',
-      status: '',
     });
   };
 
