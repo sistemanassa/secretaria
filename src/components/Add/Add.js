@@ -35,6 +35,7 @@ class Add extends Component {
     const { matricula } = this.state;
     const { assunto } = this.state;
     const { email } = this.state;
+    const { status } = this.state;
 
     const objToSubmit = {
       nome,
@@ -42,6 +43,7 @@ class Add extends Component {
       matricula,
       assunto,
       email,
+      status,
     };
 
     // eslint-disable-next-line react/prop-types
@@ -68,6 +70,7 @@ class Add extends Component {
       matricula: '',
       assunto: '',
       email: '',
+      status: '',
     });
   };
 
@@ -81,7 +84,7 @@ class Add extends Component {
     return (
       <React.Fragment>
         <Typography
-          variant="headline"
+          variant="h5"
           component="h2"
           style={{ marginBottom: '10px' }}
         >

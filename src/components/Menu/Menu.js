@@ -28,7 +28,7 @@ class Menu extends Component {
     return (
       <React.Fragment>
         <Typography
-          variant="headline"
+          variant="h5"
           component="h2"
           style={{ marginBottom: '10px' }}
         >

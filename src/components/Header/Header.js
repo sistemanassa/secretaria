@@ -53,7 +53,7 @@ const TopBar = ({ userAuth, logout, classes }) => (
       </IconButton>
 
       <Typography
-        variant="headline"
+        variant="h5"
         component="h2"
         type="title"
         color="inherit"

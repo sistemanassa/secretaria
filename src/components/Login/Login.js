@@ -67,7 +67,7 @@ class Login extends Component {
       <Paper elevation={4} style={styles.areaLogin}>
         <Fragment>
           <Typography
-            variant="headline"
+            variant="h5"
             component="h2"
             style={{ marginBottom: '15px' }}
           >

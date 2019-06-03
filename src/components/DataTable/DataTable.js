@@ -108,7 +108,7 @@ const DataTable = ({ data }) => {
           justifyContent: 'space-between',
         }}
       >
-        <Typography variant="headline" component="h2">
+        <Typography variant="h5" component="h2">
           Cadastro de Atendimento
         </Typography>
       </Toolbar>
