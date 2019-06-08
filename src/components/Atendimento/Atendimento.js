@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { firebaseDatabase } from '../../utils/firebaseUtils';
+import FirebaseService from '../../services/FirebaseService';
 
 import { withStyles } from '@material-ui/core/styles';
 import {
@@ -9,7 +11,7 @@ import {
   List,
   ListItem,
   ListItemText,
-  Divider,
+  // Divider,
   Avatar,
 } from '@material-ui/core';
 import ImageIcon from '@material-ui/icons/Image';
@@ -68,8 +70,25 @@ class Attendance extends Component {
 
     this.state = {
       value: 0,
+      ultimonome: '',
+      ultimoguiche: '',
+      historico: [],
     };
   }
+
+  componentDidMount = () => {
+    FirebaseService.getUniqueDataBy('leituras', 'historico', data =>
+      this.setState({ historico: Object.values(data).reverse() }, () => {
+        var ultimoRec = Object.values(data);
+        ultimoRec = ultimoRec[ultimoRec.length - 1];
+        this.setState({ ultimonome: ultimoRec.nome });
+        this.setState({ ultimoguiche: ultimoRec.guiche });
+      })
+    );
+    firebaseDatabase.ref('leituras').on('child_changed', () => {
+      window.location.reload();
+    });
+  };
 
   static propTypes = {
     classes: PropTypes.object.isRequired,
@@ -90,21 +109,13 @@ class Attendance extends Component {
       <div className={classes.containerRight}>
         {/* <p>Ultimas Chamadas</p> */}
         <List>
-          <ListItem>
-            <ListItemText primary="G1 - Nome" />
-          </ListItem>
-          <Divider component="li" />
-        </List>
-        <List>
-          <ListItem>
-            <ListItemText primary="G2 - Nome" />
-          </ListItem>
-          <Divider component="li" />
-        </List>
-        <List>
-          <ListItem>
-            <ListItemText primary="G3 - Nome" />
-          </ListItem>
+          {this.state.historico.map(node => (
+            // eslint-disable-next-line react/jsx-key
+            <ListItem>
+              <ListItemText primary={node.guiche + ' - ' + node.nome} />
+            </ListItem>
+            // <Divider component="li" />
+          ))}
         </List>
       </div>
     );
@@ -121,10 +132,10 @@ class Attendance extends Component {
             color="inherit"
             className={classes.grow}
           >
-            Nome
+            {this.state.ultimonome}
           </Typography>
           <Typography variant="subtitle1" color="inherit">
-            Guichê 3
+            Guichê {this.state.ultimoguiche}
           </Typography>
         </Toolbar>
       </div>

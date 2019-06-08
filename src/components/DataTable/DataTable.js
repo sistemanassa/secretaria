@@ -58,7 +58,7 @@ const DataTable = ({ data }) => {
     rowsPerPage - Math.min(rowsPerPage, data.length - page * rowsPerPage);
 
   const remove = id => {
-    FirebaseService.remove(id, 'leituras');
+    FirebaseService.remove(id, 'leituras/aguardando');
   };
 
   const handleChangeRowsPerPage = event => {
@@ -68,37 +68,6 @@ const DataTable = ({ data }) => {
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
   };
-
-  // const renderStatus = rowData => {
-  //   console.log('ROW: ', rowData);
-  //   const { classes } = this.props;
-
-  //   if (rowData.status === 'cancelado') {
-  //     return (
-  //       <span className={classes.btn} style={styles.btnRed}>
-  //         Cancelado
-  //       </span>
-  //     );
-  //   } else if (rowData.status === 'atendimento') {
-  //     return (
-  //       <span className={classes.btn} style={styles.btnGreen}>
-  //         Atendimento
-  //       </span>
-  //     );
-  //   } else if (rowData.status === 'encerrado') {
-  //     return (
-  //       <span className={classes.btn} style={styles.btnYellow}>
-  //         Encerrado
-  //       </span>
-  //     );
-  //   } else {
-  //     return (
-  //       <span className={classes.btn} style={styles.btnBlack}>
-  //         Aguardando
-  //       </span>
-  //     );
-  //   }
-  // };
 
   return (
     <div>

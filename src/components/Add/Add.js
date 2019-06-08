@@ -21,7 +21,7 @@ class Add extends Component {
 
     if (!(id === undefined || !id)) {
       this.setState({ id });
-      FirebaseService.getUniqueDataBy('leituras', id, data =>
+      FirebaseService.getUniqueDataBy('leituras/aguardando', id, data =>
         this.setState({ ...data }, () => console.log(this.state))
       );
     }
@@ -47,7 +47,7 @@ class Add extends Component {
     };
 
     // eslint-disable-next-line react/prop-types
-    if (this.props.match.params.id === undefined) {
+    /*if (this.props.match.params.id === undefined) {
       FirebaseService.pushData('leituras', objToSubmit);
     } else {
       FirebaseService.updateData(
@@ -56,7 +56,33 @@ class Add extends Component {
         'leituras',
         objToSubmit
       );
+    }*/
+
+    // eslint-disable-next-line react/prop-types
+    if (this.props.match.params.id === undefined) {
+      var currDate = new Date();
+      var dateId = currDate.getFullYear();
+      dateId += currDate.getMonth() + 1 < 10 ? '0' : '';
+      dateId += currDate.getMonth() + 1;
+      dateId += currDate.getDate() < 10 ? '0' : '';
+      dateId += currDate.getDate();
+      dateId += currDate.getHours() < 10 ? '0' : '';
+      dateId += currDate.getHours();
+      dateId += currDate.getMinutes() < 10 ? '0' : '';
+      dateId += currDate.getMinutes();
+      dateId += currDate.getSeconds() < 10 ? '0' : '';
+      dateId += currDate.getSeconds();
+      dateId += currDate.getMilliseconds() < 10 ? '0' : '';
+      dateId += currDate.getMilliseconds();
+      // eslint-disable-next-line react/prop-types
+      this.props.match.params.id = dateId;
     }
+    FirebaseService.updateData(
+      // eslint-disable-next-line react/prop-types
+      this.props.match.params.id,
+      'leituras/aguardando',
+      objToSubmit
+    );
 
     // eslint-disable-next-line react/prop-types
     // this.props.history.push(urls.data.path);

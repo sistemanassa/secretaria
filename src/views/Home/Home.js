@@ -28,14 +28,14 @@ class Home extends Component {
       // eslint-disable-next-line react/prop-types
       () => this.props.logout()
     );
-    FirebaseService.getDataList('leituras', dataReceived =>
+    FirebaseService.getDataList('leituras/aguardando', dataReceived =>
       this.setState({ data: dataReceived })
     );
   }
 
   render() {
     // eslint-disable-next-line no-useless-escape
-    const notInLoginOrAtendimento = /^(?!.*(\Login|\Atendimento)).*$/;
+    const notInLoginOrAtendimento = /^(?!.*(\/Login|\/Atendimento)).*$/;
     return (
       <div>
         <Route

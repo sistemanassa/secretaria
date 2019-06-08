@@ -60,7 +60,7 @@ class Home extends Component {
       // eslint-disable-next-line react/prop-types
       () => this.props.logout()
     );
-    FirebaseService.getDataList('leituras', dataReceived =>
+    FirebaseService.getDataList('leituras/aguardando', dataReceived =>
       this.setState({ data: dataReceived })
     );
   }

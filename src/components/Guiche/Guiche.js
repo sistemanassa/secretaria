@@ -8,6 +8,7 @@ import {
   InputBase,
 } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
+import FirebaseService from '../../services/FirebaseService';
 
 const BootstrapInput = withStyles(theme => ({
   root: {
@@ -97,17 +98,112 @@ class Guiche extends Component {
     classes: PropTypes.object.isRequired,
   };
 
-  // startAttendance = () => {
+  startAttendance = () => {
+    FirebaseService.getUniqueDataBy(
+      'leituras/atendimento',
+      this.state.guiche,
+      data =>
+        this.setState({ ...data }, () => {
+          FirebaseService.getDataList('leituras', dataReceived =>
+            this.setState({ ...dataReceived }, () => {
+              if (
+                this.state.guiche.length > 0 &&
+                (data === null || data.length === 0)
+              ) {
+                if (
+                  (data === null || data.length === 0) &&
+                  (dataReceived !== null && dataReceived.length > 0)
+                ) {
+                  var proximo = Object.keys(dataReceived[0])[0];
+                  var node = {};
+                  node[proximo] = dataReceived[0][proximo];
+                  node[proximo].status = 'Em Atendimento';
+                  var currDate = new Date();
+                  var dateId = currDate.getFullYear();
+                  dateId += '/';
+                  dateId += currDate.getMonth() + 1 < 10 ? '0' : '';
+                  dateId += currDate.getMonth() + 1;
+                  dateId += '/';
+                  dateId += currDate.getDate() < 10 ? '0' : '';
+                  dateId += currDate.getDate();
+                  dateId += ' ';
+                  dateId += currDate.getHours() < 10 ? '0' : '';
+                  dateId += currDate.getHours();
+                  dateId += ':';
+                  dateId += currDate.getMinutes() < 10 ? '0' : '';
+                  dateId += currDate.getMinutes();
+                  dateId += ':';
+                  dateId += currDate.getSeconds() < 10 ? '0' : '';
+                  dateId += currDate.getSeconds();
+                  /*dateId += ':';
+                  dateId += (currDate.getMilliseconds() < 10 ? '0': '');
+                  dateId += currDate.getMilliseconds();*/
+                  //console.log(node);
+                  node[proximo].guiche = this.state.guiche;
+                  node[proximo].inicio = dateId;
+                  FirebaseService.updateData(
+                    this.state.guiche,
+                    'leituras/atendimento',
+                    node
+                  );
+                  dataReceived[0][proximo].guiche = node[proximo].guiche;
+                  dataReceived[0][proximo].status = node[proximo].status;
+                  dataReceived[0][proximo].inicio = node[proximo].inicio;
+                  FirebaseService.updateData(
+                    proximo,
+                    'leituras/historico',
+                    dataReceived[0][proximo]
+                  );
 
-  // };
+                  this.setState({ guiche: '' });
+                  FirebaseService.remove(proximo, 'leituras/aguardando');
+                }
+              }
+            })
+          );
+        })
+    );
+  };
 
-  // endService = () => {
+  endService = () => {
+    FirebaseService.getUniqueDataBy(
+      'leituras/atendimento',
+      this.state.guiche,
+      data =>
+        this.setState({ ...data }, () => {
+          var node = Object.keys(data);
+          data[node].status = 'Encerrado';
+          FirebaseService.updateData(
+            node,
+            'leituras/encerrado/' + this.state.guiche,
+            data[node]
+          );
+          FirebaseService.updateData(node, 'leituras/historico', data[node]);
+          FirebaseService.remove(this.state.guiche, 'leituras/atendimento');
+          this.setState({ guiche: '' });
+        })
+    );
+  };
 
-  // };
-
-  // cancelService = () => {
-
-  // };
+  cancelService = () => {
+    FirebaseService.getUniqueDataBy(
+      'leituras/atendimento',
+      this.state.guiche,
+      data =>
+        this.setState({ ...data }, () => {
+          var node = Object.keys(data);
+          data[node].status = 'Cancelado';
+          FirebaseService.updateData(
+            node,
+            'leituras/cancelado/' + this.state.guiche,
+            data[node]
+          );
+          FirebaseService.updateData(node, 'leituras/historico', data[node]);
+          FirebaseService.remove(this.state.guiche, 'leituras/atendimento');
+          this.setState({ guiche: '' });
+        })
+    );
+  };
 
   handleChangeGuiche = evt => {
     this.setState({ guiche: evt.target.value });
@@ -150,7 +246,7 @@ class Guiche extends Component {
           color="primary"
           title="Iniciar"
           className={classes.btnGreen}
-          // onclick={() => this.startAttendance()}
+          onClick={() => this.startAttendance()}
           disabled={!this.isValid()}
         >
           Iniciar
@@ -161,7 +257,7 @@ class Guiche extends Component {
           color="primary"
           title="Encerrar"
           className={classes.btnYellow}
-          // onclick={() => this.endService()}
+          onClick={() => this.endService()}
           disabled={!this.isValid()}
         >
           Encerrar
@@ -172,7 +268,7 @@ class Guiche extends Component {
           color="primary"
           title="Cancelar"
           className={classes.btnRed}
-          // onclick={() => this.cancelService()}
+          onClick={() => this.cancelService()}
           disabled={!this.isValid()}
         >
           Cancelar
