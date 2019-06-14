@@ -15,7 +15,7 @@ import {
   Avatar,
 } from '@material-ui/core';
 import ImageIcon from '@material-ui/icons/Image';
-import moment from 'moment';
+import Clock from 'react-live-clock';
 
 import Video from '../Video/Video';
 
@@ -108,7 +108,6 @@ class Attendance extends Component {
     const { classes } = this.props;
     return (
       <div className={classes.containerRight}>
-        {/* <p>Ultimas Chamadas</p> */}
         <List>
           {this.state.historico.map(node => (
             // eslint-disable-next-line react/jsx-key
@@ -126,7 +125,6 @@ class Attendance extends Component {
     const { classes } = this.props;
     return (
       <div className={classes.containerLeft}>
-        {/* <p>Chamada Atual</p> */}
         <Toolbar className={classes.toolbar}>
           <Typography
             variant="subtitle1"
@@ -143,19 +141,10 @@ class Attendance extends Component {
     );
   };
 
-  // renderTimer = () => {
-  //   const time = moment().format('HH:mm:ss a');
-  //   return {
-  //     setInterval(time, 1000);
-  //   };
-  // };
-
   renderCompany = () => {
     const { classes } = this.props;
-    const hour = moment().format('HH:mm:ss a');
     return (
       <div className={classes.containerRight}>
-        {/* <p>Logo e Hora</p> */}
         <List className={classes.root}>
           <ListItem>
             <Avatar>
@@ -169,7 +158,7 @@ class Attendance extends Component {
               color="textSecondary"
               variant="caption"
             >
-              {hour}
+              <Clock format={'HH:mm:ss a'} ticking={true} />
             </Typography>
           </li>
         </List>
