@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { Button, Typography } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import { urls } from '../../utils/urlUtils';
+import FirebaseService from '../../services/FirebaseService';
 
 const styles = {
   margin: {
@@ -21,6 +22,22 @@ const styles = {
 class Menu extends Component {
   static propTypes = {
     classes: PropTypes.object.isRequired,
+  };
+
+  // eslint-disable-next-line constructor-super
+  constructor() {
+    super();
+    this.state = {
+      historico: null,
+    }
+  }
+
+  componentDidMount = () => {
+    FirebaseService.getUniqueDataBy('leituras', 'historico', data => {
+      if (data && Object.keys(data).length > 0) {
+        this.setState({ historico: Object.values(data).reverse() });
+      }
+    });
   };
 
   render() {
@@ -53,14 +70,16 @@ class Menu extends Component {
         >
           Data
         </Button>
-        <Button
-          component={props => (
-            <Link to={urls.atendimento.path} {...props} target="_blank" />
-          )}
-          className={classes.btnMenu}
-        >
-          Atendimento
-        </Button>
+        {this.state.historico ? (
+          <Button
+            component={props => (
+              <Link to={urls.atendimento.path} {...props} target="_blank" />
+            )}
+            className={classes.btnMenu}
+          >
+            Atendimento
+          </Button>
+        ) : null }
       </React.Fragment>
     );
   }
