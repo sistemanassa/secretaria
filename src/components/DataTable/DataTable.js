@@ -13,6 +13,10 @@ import {
   Typography,
   IconButton,
   Toolbar,
+  Radio,
+  RadioGroup,
+  FormControl,
+  FormControlLabel,
 } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import FirebaseService from '../../services/FirebaseService';
@@ -52,6 +56,7 @@ const styles = {
 
 // eslint-disable-next-line react/prop-types
 const DataTable = ({ data }) => {
+  const [value, setValue] = React.useState('');
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
   const emptyRows =
@@ -67,6 +72,10 @@ const DataTable = ({ data }) => {
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
+  };
+
+  const handleChangeRadio = event => {
+    setValue(event.target.value);
   };
 
   return (
@@ -86,6 +95,7 @@ const DataTable = ({ data }) => {
         <TableHead>
           <TableRow>
             {/* <TableCell>Key</TableCell> */}
+            <TableCell></TableCell>
             <TableCell>Nome</TableCell>
             <TableCell>CPF</TableCell>
             <TableCell>Matrícula</TableCell>
@@ -102,6 +112,27 @@ const DataTable = ({ data }) => {
             .map((item, index) => (
               <TableRow key={index}>
                 {/* <TableCell>{item.key}</TableCell> */}
+                <TableCell>
+                  <FormControl
+                    component="fieldset"
+                    className={styles.formControl}
+                  >
+                    <RadioGroup
+                      aria-label="gender"
+                      name="gender2"
+                      className={styles.group}
+                      value={value}
+                      onChange={handleChangeRadio}
+                    >
+                      <FormControlLabel
+                        value="item"
+                        control={<Radio color="primary" />}
+                        // label="Female"
+                        labelPlacement="start"
+                      />
+                    </RadioGroup>
+                  </FormControl>
+                </TableCell>
                 <TableCell>{item.nome}</TableCell>
                 <TableCell>{item.cpf}</TableCell>
                 <TableCell>{item.matricula}</TableCell>

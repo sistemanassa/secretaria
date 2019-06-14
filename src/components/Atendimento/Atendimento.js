@@ -15,6 +15,7 @@ import {
   Avatar,
 } from '@material-ui/core';
 import ImageIcon from '@material-ui/icons/Image';
+import moment from 'moment';
 
 import Video from '../Video/Video';
 
@@ -142,8 +143,16 @@ class Attendance extends Component {
     );
   };
 
+  // renderTimer = () => {
+  //   const time = moment().format('HH:mm:ss a');
+  //   return {
+  //     setInterval(time, 1000);
+  //   };
+  // };
+
   renderCompany = () => {
     const { classes } = this.props;
+    const hour = moment().format('HH:mm:ss a');
     return (
       <div className={classes.containerRight}>
         {/* <p>Logo e Hora</p> */}
@@ -160,7 +169,7 @@ class Attendance extends Component {
               color="textSecondary"
               variant="caption"
             >
-              16:35
+              {hour}
             </Typography>
           </li>
         </List>

@@ -71,13 +71,13 @@ const TopBar = ({ userAuth, logout, classes }) => (
           >
             Usuário: {userAuth.email}
           </Typography>
-          <Typography
+          {/* <Typography
             type="title"
             color="inherit"
             style={{ marginLeft: '20px' }}
           >
             Guichê: {userAuth.guiche}
-          </Typography>
+          </Typography> */}
 
           <Button
             variant="contained"
