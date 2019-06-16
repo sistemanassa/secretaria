@@ -217,9 +217,14 @@ class Guiche extends Component {
     if (!this.state.guiches || !this.state.guiche) {
       return false;
     }
-    return this.state.guiches.find(item => {
-      return item.key === this.state.guiche;
-    });
+    return this.state.guiches.find(item => item.key === this.state.guiche);
+  };
+
+  isValidIniciar = () => {
+    if (!this.state.guiche || !this.state.guiches) {
+      return false;
+    }
+    return !this.state.guiches.find(item => item.key === this.state.guiche);
   };
 
   render() {
@@ -255,7 +260,7 @@ class Guiche extends Component {
           title="Iniciar"
           className={classes.btnGreen}
           onClick={() => this.startAttendance()}
-          disabled={!this.isValid()}
+          disabled={!this.isValidIniciar()}
         >
           Iniciar
         </Button>
