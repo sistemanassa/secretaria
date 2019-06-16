@@ -207,11 +207,19 @@ class Guiche extends Component {
 
   handleChangeGuiche = evt => {
     this.setState({ guiche: evt.target.value });
+    FirebaseService.getDataList('leituras/atendimento', dataReceived =>
+      this.setState({ guiches: dataReceived })
+    );
   };
 
   /* Valid field */
   isValid = () => {
-    return this.state.guiche.length !== 0;
+    if (!this.state.guiches || !this.state.guiche) {
+      return false;
+    }
+    return this.state.guiches.find(item => {
+      return item.key === this.state.guiche;
+    });
   };
 
   render() {
