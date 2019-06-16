@@ -87,6 +87,7 @@ class Add extends Component {
     // eslint-disable-next-line react/prop-types
     // this.props.history.push(urls.data.path);
     this.clearFields();
+    window.location.reload();
   };
 
   clearFields = () => {
