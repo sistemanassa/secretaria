@@ -114,7 +114,13 @@ class Guiche extends Component {
                   (data === null || data.length === 0) &&
                   (dataReceived !== null && dataReceived.length > 0)
                 ) {
-                  var proximo = Object.keys(dataReceived[0])[0];
+                  var keys = Object.keys(dataReceived[0]);
+                  keys.pop('key');
+
+                  var lista = keys.sort(function(x, y) {
+                    return (dataReceived[0][x].prioridade === dataReceived[0][y].prioridade) ? 0 : dataReceived[0][x].prioridade ? -1 : 1;
+                  });
+                  var proximo = lista[0];
                   var node = {};
                   node[proximo] = dataReceived[0][proximo];
                   node[proximo].status = 'Em Atendimento';

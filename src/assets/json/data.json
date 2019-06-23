@@ -6,6 +6,8 @@
     "assunto": "String",
     "email": "String",
     "guiche": "String",
-    "status": "String"
+    "status": "String",
+    "prioridade": "Boolean"
+
   }
 ]

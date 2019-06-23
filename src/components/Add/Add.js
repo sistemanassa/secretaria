@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, TextField, Typography } from '@material-ui/core';
+import { Button, TextField, Typography, Checkbox } from '@material-ui/core';
 import FirebaseService from '../../services/FirebaseService';
 // import { urls } from '../../utils/urlUtils';
 import { withRouter } from 'react-router-dom';
@@ -13,6 +13,7 @@ class Add extends Component {
     assunto: '',
     email: '',
     status: 'Aguardando',
+    prioridade: false
   };
 
   componentWillMount = () => {
@@ -36,6 +37,7 @@ class Add extends Component {
     const { assunto } = this.state;
     const { email } = this.state;
     const { status } = this.state;
+    const { prioridade } = this.state;
 
     const objToSubmit = {
       nome,
@@ -44,6 +46,7 @@ class Add extends Component {
       assunto,
       email,
       status,
+      prioridade
     };
 
     // eslint-disable-next-line react/prop-types
@@ -97,6 +100,7 @@ class Add extends Component {
       matricula: '',
       assunto: '',
       email: '',
+      prioridade: false
     });
   };
 
@@ -104,6 +108,18 @@ class Add extends Component {
     this.setState({
       [name]: event.target.value,
     });
+  };
+
+  handleBooleanChange = name => event => {
+    if (this.state[name]) {
+      this.setState({
+        [name]: false,
+      });
+    } else {
+      this.setState({
+        [name]: true,
+      });
+    }
   };
 
   render = () => {
@@ -172,6 +188,18 @@ class Add extends Component {
             onChange={this.handleChange('email')}
             style={{ marginBottom: '20px' }}
           />
+
+          Prioridade
+          <Checkbox
+            checked={this.state.prioridade}
+            onChange={this.handleBooleanChange('prioridade')}
+            value={this.state.prioridade}
+            style={{color: '#ccc' }}
+            inputProps={{
+              'aria-label': 'primary checkbox',
+            }}
+          />
+          <br />
 
           <Button
             variant="contained"
