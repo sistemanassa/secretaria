@@ -120,7 +120,12 @@ class Guiche extends Component {
                   var lista = keys.sort(function(x, y) {
                     return (dataReceived[0][x].prioridade === dataReceived[0][y].prioridade) ? 0 : dataReceived[0][x].prioridade ? -1 : 1;
                   });
+                  
                   var proximo = lista[0];
+                  if (! dataReceived[0][proximo].prioridade) {
+                    proximo = Object.keys(dataReceived[0])[0];
+                  }
+
                   var node = {};
                   node[proximo] = dataReceived[0][proximo];
                   node[proximo].status = 'Em Atendimento';
