@@ -13,7 +13,7 @@ import {
   Typography,
   IconButton,
   Toolbar,
-  Checkbox
+  Checkbox,
 } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import FirebaseService from '../../services/FirebaseService';
@@ -53,6 +53,7 @@ const styles = {
 
 // eslint-disable-next-line react/prop-types
 const DataTable = ({ data }) => {
+  // eslint-disable-next-line no-unused-vars
   const [value, setValue] = React.useState('');
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
@@ -71,18 +72,14 @@ const DataTable = ({ data }) => {
     setPage(newPage);
   };
 
-  const changePriority = (item) => {
+  const changePriority = item => {
     if (item.prioridade) {
       item.prioridade = false;
     } else {
       item.prioridade = true;
     }
 
-    FirebaseService.updateData(
-      item.key,
-      'leituras/aguardando',
-      item
-    );
+    FirebaseService.updateData(item.key, 'leituras/aguardando', item);
   };
 
   return (
@@ -120,11 +117,11 @@ const DataTable = ({ data }) => {
               <TableRow key={index}>
                 {/* <TableCell>{item.key}</TableCell> */}
                 <TableCell>
-                    <Checkbox
-                    style={{color: '#ccc' }}
+                  <Checkbox
+                    style={{ color: '#ccc' }}
                     checked={item.prioridade}
                     onChange={() => changePriority(item)}
-                    />
+                  />
                 </TableCell>
                 <TableCell>{item.nome}</TableCell>
                 <TableCell>{item.cpf}</TableCell>

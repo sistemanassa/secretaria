@@ -79,16 +79,16 @@ class Attendance extends Component {
 
   componentDidMount = () => {
     FirebaseService.getUniqueDataBy('leituras', 'historico', data => {
-      var historico = Object.values(data).sort(function (a, b) {
+      var historico = Object.values(data).sort(function(a, b) {
         var key1 = new Date(a.inicio);
         var key2 = new Date(b.inicio);
-    
+
         if (key1 < key2) {
-            return -1;
-        } else if (key1 == key2) {
-            return 0;
+          return -1;
+        } else if (key1 === key2) {
+          return 0;
         } else {
-            return 1;
+          return 1;
         }
       });
       this.setState({ historico: historico.reverse() }, () => {
@@ -96,7 +96,7 @@ class Attendance extends Component {
         ultimoRec = historico[0];
         this.setState({ ultimonome: ultimoRec.nome });
         this.setState({ ultimoguiche: ultimoRec.guiche });
-      })
+      });
     });
     firebaseDatabase.ref('leituras').on('child_changed', () => {
       window.location.reload();
